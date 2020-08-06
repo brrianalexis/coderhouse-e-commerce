@@ -20,7 +20,8 @@
     "lint:fix": "eslint . --fix",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "setup": "yarn lint && yarn test --collectCoverage  && yarn build"
   },
   "eslintConfig": {
     "extends": "react-app"
