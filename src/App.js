@@ -6,7 +6,13 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/' exact component={Home} />
+        <Route
+          path='/'
+          exact
+          render={props => (
+            <Home {...props} greeting='Hi there, fellow coder!' />
+          )} /*  component={Home} */
+        />
       </Switch>
     </Router>
   );

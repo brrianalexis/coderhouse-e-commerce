@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from './Link';
+import { Icon, Link } from './';
 import { Home, Contact, ContactInfo, Cart } from 'grommet-icons';
 
 export const NavBar = () => {
@@ -24,28 +24,24 @@ export const NavBar = () => {
         }}
       >
         <Link to='/'>
-          <>
+          <Icon text='Home' data-testid='Home-Icon'>
             <Home color='#1D3557' style={{ margin: 5 }} />
-            Home
-          </>
+          </Icon>
         </Link>
         <Link to='/about'>
-          <>
+          <Icon text='About' data-testid='About-Icon'>
             <ContactInfo color='#1D3557' style={{ margin: 5 }} />
-            About
-          </>
+          </Icon>
         </Link>
         <Link to='/contact'>
-          <>
+          <Icon text='Contact Us' data-testid='Contact-Icon'>
             <Contact color='#1D3557' style={{ margin: 5 }} />
-            Contact Us
-          </>
+          </Icon>
         </Link>
         <Link to='/cart'>
-          <>
+          <Icon text='Cart' data-testid='Cart-Icon'>
             <Cart color='#1D3557' style={{ margin: 5 }} />
-            Cart
-          </>
+          </Icon>
         </Link>
       </nav>
     </header>

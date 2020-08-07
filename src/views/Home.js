@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavBar } from '../components';
 
-export const Home = () => {
+export const Home = ({ greeting }) => {
   return (
-    <div>
+    <>
       <NavBar />
       <h1>Important Stuff</h1>
+      <p>{greeting}</p>
       <div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
@@ -109,6 +111,10 @@ export const Home = () => {
           condimentum faucibus vel eget massa.
         </p>
       </div>
-    </div>
+    </>
   );
+};
+
+Home.propTypes = {
+  greeting: PropTypes.string,
 };

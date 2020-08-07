@@ -1,4 +1,5 @@
 import Link from './Link';
 import { NavBar } from './NavBar';
+import { Icon } from './Icon';
 
-export { Link, NavBar };
+export { Icon, Link, NavBar };
