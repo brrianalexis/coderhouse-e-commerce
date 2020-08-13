@@ -6,7 +6,7 @@ import { ItemCount } from '../ItemCount';
 describe('ItemCount component', () => {
   it("should render a container with buttons to decrease or increase the amount of articles to be added to the user's cart", () => {
     render(
-      <ItemCount initial={0} min={2} max={10} article="Tester's article" />
+      <ItemCount initial={2} min={2} max={10} article="Tester's article" />
     );
     const articleCounterContainer = screen.getByTestId(
       'article-counter-container'

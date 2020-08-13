@@ -31,7 +31,7 @@ const inputStyles = {
 const CustomInput = ({
   addClick,
   subtractClick,
-  value = 0,
+  value = 2,
   min,
   max,
   onCountChange,
@@ -57,6 +57,7 @@ const CustomInput = ({
         min={min}
         max={max}
         onChange={e => onCountChange(e)}
+        disabled
         data-testid='article-counter-input'
       />
       <button
@@ -75,21 +76,22 @@ const CustomInput = ({
   );
 };
 
-export const ItemCount = ({
-  initial = 0,
-  // onAdd,
-  min,
-  max,
-  article = 'Article name',
-}) => {
+export const ItemCount = ({ initial, min, max, article = 'Article name' }) => {
   const [count, setCount] = useState(initial);
 
   const isValidAmount = min <= count <= max;
 
-  const onCountChange = e =>
+  const onCountChange = e => {
     e.target.value === '' ? setCount(0) : setCount(parseInt(e.target.value));
+  };
 
-  const onAdd = count => alert(`${count} ${article} added to your cart!`);
+  const onAdd = count => {
+    isValidAmount
+      ? alert(`${count} ${article} added to your cart!`)
+      : alert(
+          `Invalid ${article} amount. You must add between ${min} and ${max} to your cart`
+        );
+  };
 
   return (
     <div
@@ -116,8 +118,12 @@ export const ItemCount = ({
           {article}
         </p>
         <CustomInput
-          addClick={() => setCount(count + 1)}
-          subtractClick={() => setCount(count - 1)}
+          addClick={() => {
+            setCount(count + 1);
+          }}
+          subtractClick={() => {
+            setCount(count - 1);
+          }}
           value={count}
           min={min}
           max={max}
@@ -139,7 +145,7 @@ export const ItemCount = ({
         className='add-to-cart-button'
         data-testid='add-to-cart-button'
         onClick={() => onAdd(count, article)}
-        disabled={isValidAmount}
+        disabled={!isValidAmount}
       >
         Add to cart
       </button>
@@ -158,7 +164,6 @@ CustomInput.propTypes = {
 
 ItemCount.propTypes = {
   initial: PropTypes.number,
-  // onAdd: PropTypes.func.isRequired,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   article: PropTypes.string.isRequired,

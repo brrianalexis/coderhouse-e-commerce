@@ -144,11 +144,12 @@ describe('Home view', () => {
               </button>
               <input
                 data-testid="article-counter-input"
+                disabled=""
                 max="10"
                 min="2"
                 style="width: 10vw; height: 2rem; box-sizing: border-box; text-align: center; background-color: inherit;"
                 type="number"
-                value="0"
+                value="2"
               />
               <button
                 data-testid="add-button"
@@ -173,7 +174,6 @@ describe('Home view', () => {
           <button
             class="add-to-cart-button"
             data-testid="add-to-cart-button"
-            disabled=""
             style="background: none; border: 1px solid #a8dadc; padding: 0px; cursor: default; outline: inherit; height: 1.5rem; margin: 0.5vh auto auto auto; background-color: rgb(241, 250, 238); border-radius: 0.5em; width: 27.5vw;"
           >
             Add to cart
