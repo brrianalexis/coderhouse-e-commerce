@@ -1,0 +1,9 @@
+.add-to-cart-button:hover {
+  background-color: #a8dadc !important;
+  border: 1px solid #f1faee !important;
+}
+
+.add-to-cart-icons:hover {
+  fill: #1d3557;
+  stroke: #1d3557;
+}
