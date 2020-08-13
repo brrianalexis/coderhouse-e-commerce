@@ -1,31 +1,27 @@
 {
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended",
-		"plugin:prettier/recommended"
-	],
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": 2020,
-		"sourceType": "module"
-	},
-	"plugins": [
-		"react",
-		"react-hooks",
-		"import"
-	],
-	"rules": {
-		"no-console": 1,
-		"no-undef": 0,
-		"no-unused-vars": 1,
-		"react-hooks/exhaustive-deps": "warn",
-		"react-hooks/rules-of-hooks": "error"
-	},
-	"settings": {
-		"react": {
-			"version": "detect"
-		}
-	}
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "import"],
+  "rules": {
+    "no-console": 0,
+    "no-undef": 0,
+    "no-unused-vars": 1,
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
