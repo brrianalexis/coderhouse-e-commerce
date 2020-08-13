@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavBar } from '../components';
+import { NavBar, ItemCount } from '../components';
 
 export const Home = ({ greeting }) => {
   return (
@@ -8,6 +8,7 @@ export const Home = ({ greeting }) => {
       <NavBar />
       <h1>Important Stuff</h1>
       <p>{greeting}</p>
+      <ItemCount initial={0} min={2} max={10} article='My article' />
       <div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis

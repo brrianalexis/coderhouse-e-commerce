@@ -106,6 +106,79 @@ describe('Home view', () => {
         <p>
           hey, tester!
         </p>
+        <div
+          data-testid="article-counter-container"
+          style="display: flex; flex-direction: column; width: 30vw;"
+        >
+          <div
+            data-testid="article-counter"
+            style="background-color: rgb(241, 250, 238);"
+          >
+            <p
+              style="margin: 1vh auto; display: flex; justify-content: center;"
+            >
+              My article
+            </p>
+            <div
+              data-testid="add-subtract-container"
+              style="box-sizing: border-box; display: flex; justify-content: space-around;"
+            >
+              <button
+                data-testid="subtract-button"
+                disabled=""
+                style="background: none; padding: 0px; cursor: pointer; outline: inherit;"
+              >
+                <svg
+                  aria-label="Subtract"
+                  class="StyledIcon-ofa7kd-0 dMUFv add-to-cart-icons"
+                  data-testid="subtract-icon"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M2,12 L22,12"
+                    fill="none"
+                    stroke="#000"
+                    stroke-width="2"
+                  />
+                </svg>
+              </button>
+              <input
+                data-testid="article-counter-input"
+                max="10"
+                min="2"
+                style="width: 10vw; height: 2rem; box-sizing: border-box; text-align: center; background-color: inherit;"
+                type="number"
+                value="0"
+              />
+              <button
+                data-testid="add-button"
+                style="background: none; padding: 0px; cursor: pointer; outline: inherit;"
+              >
+                <svg
+                  aria-label="Add"
+                  class="StyledIcon-ofa7kd-0 dMUFv add-to-cart-icons"
+                  data-testid="add-icon"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12,22 L12,2 M2,12 L22,12"
+                    fill="none"
+                    stroke="#000"
+                    stroke-width="2"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button
+            class="add-to-cart-button"
+            data-testid="add-to-cart-button"
+            disabled=""
+            style="background: none; border: 1px solid #a8dadc; padding: 0px; cursor: default; outline: inherit; height: 1.5rem; margin: 0.5vh auto auto auto; background-color: rgb(241, 250, 238); border-radius: 0.5em; width: 27.5vw;"
+          >
+            Add to cart
+          </button>
+        </div>
         <div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor lobortis risus, nec accumsan magna malesuada nec. Nullam facilisis quam vel quam mattis, vitae mattis arcu porttitor. In bibendum velit quis libero porta, sed ullamcorper nunc volutpat. Integer placerat aliquam ornare. Aliquam maximus, neque id ornare porta, ex nibh porttitor orci, non dapibus purus libero in elit. Maecenas tincidunt arcu vel malesuada cursus. Sed ut facilisis est. Sed euismod pulvinar placerat. Nulla facilisi. Suspendisse vel ante sit amet sapien consequat consectetur. Quisque at neque ante. Maecenas efficitur interdum neque, non cursus tortor blandit at.
