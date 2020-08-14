@@ -6,7 +6,7 @@ import { ItemCount } from '../ItemCount';
 describe('ItemCount component', () => {
   it("should render a container with buttons to decrease or increase the amount of articles to be added to the user's cart", () => {
     render(
-      <ItemCount initial={2} min={2} max={10} article="Tester's article" />
+      <ItemCount initial={2} min={2} max={5} article="Tester's article" />
     );
     const articleCounterContainer = screen.getByTestId(
       'article-counter-container'
@@ -44,13 +44,22 @@ describe('ItemCount component', () => {
       justify-content: space-around;
     `);
 
-    //TODO    onClick, disabled de acuerdo a la cantidad
     expect(subtractButton).toHaveStyle(`
       background: none;
       padding: 0;
       cursor: pointer;
       outline: inherit;
     `);
+    expect(articleCounterInput).toHaveValue(2);
+    expect(subtractButton).toBeDisabled();
+    user.click(subtractButton);
+    expect(articleCounterInput).toHaveValue(2);
+
+    user.dblClick(addButton);
+    expect(articleCounterInput).toHaveValue(4);
+
+    user.click(subtractButton);
+    expect(articleCounterInput).toHaveValue(3);
 
     expect(subtractIcon).toMatchInlineSnapshot(`
       <svg
@@ -68,16 +77,26 @@ describe('ItemCount component', () => {
       </svg>
     `);
 
-    //TODO    min, max, on change
     expect(articleCounterInput).toHaveAttribute('type', 'number');
+    expect(articleCounterInput).toHaveAttribute('min', '2');
+    expect(articleCounterInput).toHaveAttribute('max', '5');
 
-    //TODO    onClick, disabled de acuerdo a la cantidad
     expect(addButton).toHaveStyle(`
       background: none;
       padding: 0;
       cursor: pointer;
       outline: inherit;
     `);
+
+    expect(articleCounterInput).toHaveValue(3);
+    user.dblClick(addButton);
+    expect(addButton).toBeDisabled();
+
+    user.click(subtractButton);
+    expect(articleCounterInput).toHaveValue(4);
+
+    user.click(subtractButton);
+    expect(articleCounterInput).toHaveValue(3);
 
     expect(addIcon).toMatchInlineSnapshot(`
       <svg
@@ -95,16 +114,20 @@ describe('ItemCount component', () => {
       </svg>
     `);
 
-    //TODO    onClick, disabled + cambio de cursor de acuerdo a la cantidad
     expect(addToCartButton).toHaveStyle(`
-      height: 1.5rem;
-      margin: 0.5vh auto auto auto;
-      background-color: #F1FAEE;
-      border: 1px solid #A8DADC;
-      border-radius: 0.5em;
-      width: 27.5vw;
-      cursor: default;
+    height: 1.5rem;
+    margin: 0.5vh auto auto auto;
+    background-color: #F1FAEE;
+    border: 1px solid #A8DADC;
+    border-radius: 0.5em;
+    width: 27.5vw;
+    cursor: default;
     `);
+
+    window.alert = jest.fn();
+    user.click(addToCartButton);
+    expect(window.alert).toHaveBeenCalled();
+    expect(window.alert).toHaveBeenCalledTimes(1);
 
     screen.debug();
   });
