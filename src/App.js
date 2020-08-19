@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home } from './views';
+import { Home, Catalog } from './views';
 
 function App() {
   return (
@@ -11,8 +11,9 @@ function App() {
           exact
           render={props => (
             <Home {...props} greeting='Hi there, fellow coder!' />
-          )} /*  component={Home} */
+          )}
         />
+        <Route path='/products' exact component={Catalog} />
       </Switch>
     </Router>
   );

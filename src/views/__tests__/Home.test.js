@@ -42,23 +42,24 @@ describe('Home view', () => {
               Home
             </a>
             <a
-              href="/about"
+              href="/products"
               style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
             >
               <svg
-                aria-label="ContactInfo"
+                aria-label="Shop"
                 class="StyledIcon-ofa7kd-0 hGmYEj"
                 style="margin: 5px;"
                 viewBox="0 0 24 24"
               >
                 <path
-                  d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
+                  d="M4,7 L20,7 L20,23 L4,23 L4,7 Z M8,9 L8,5 C8,2.790861 9.79535615,1 12,1 L12,1 C14.209139,1 16,2.79535615 16,5 L16,9"
                   fill="none"
                   stroke="#000"
+                  stroke-linecap="round"
                   stroke-width="2"
                 />
               </svg>
-              About
+              Products
             </a>
             <a
               href="/contact"

@@ -7,3 +7,11 @@
   fill: #1d3557;
   stroke: #1d3557;
 }
+
+.album-art {
+  transition: transform 0.2s;
+}
+
+.album-art:hover {
+  transform: scale(1.1);
+}

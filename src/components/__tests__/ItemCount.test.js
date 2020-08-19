@@ -128,7 +128,5 @@ describe('ItemCount component', () => {
     user.click(addToCartButton);
     expect(window.alert).toHaveBeenCalled();
     expect(window.alert).toHaveBeenCalledTimes(1);
-
-    screen.debug();
   });
 });
