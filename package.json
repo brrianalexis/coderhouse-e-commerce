@@ -19,7 +19,7 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom-fourteen",
     "test:coverage": "yarn test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "setup": "yarn lint && yarn test --collectCoverage  && yarn build"
