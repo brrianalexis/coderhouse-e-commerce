@@ -8,6 +8,12 @@
   stroke: #1d3557;
 }
 
+.buy-button:hover {
+  background-color: #e63946 !important;
+  border: 1px solid #e63946 !important;
+  color: #f1faee !important;
+}
+
 .album-art {
   transition: transform 0.2s;
 }

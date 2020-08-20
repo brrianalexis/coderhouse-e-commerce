@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home, Catalog } from './views';
+import { Home, Catalog, ItemView } from './views';
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
           )}
         />
         <Route path='/products' exact component={Catalog} />
+        <Route path='/products/:id' exact component={ItemView} />
       </Switch>
     </Router>
   );

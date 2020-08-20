@@ -20,13 +20,13 @@ describe('NavBar component', () => {
         align-items: center;
         background-color: #457B9D;
         width: 100%;
-        height: 5vh;
+        height: 3rem;
         position: sticky;
         top: 0;
     `);
     expect(header).toMatchInlineSnapshot(`
       <header
-        style="display: flex; align-items: center; background-color: rgb(69, 123, 157); width: 100%; height: 5vh; position: sticky; top: 0px;"
+        style="display: flex; align-items: center; background-color: rgb(69, 123, 157); width: 100%; height: 3rem; position: sticky; top: 0px;"
       >
         <nav
           style="display: flex; align-items: center; justify-content: space-around; width: 100%;"

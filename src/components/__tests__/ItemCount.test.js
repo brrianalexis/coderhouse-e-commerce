@@ -12,7 +12,7 @@ describe('ItemCount component', () => {
       'article-counter-container'
     );
     const articleCounter = screen.getByTestId('article-counter');
-    const articleName = screen.getByText(/tester's article/i);
+    // const articleName = screen.getByText(/tester's article/i);
     const addSubtractContainer = screen.getByTestId('add-subtract-container');
     const subtractButton = screen.getByTestId('subtract-button');
     const subtractIcon = screen.getByTestId('subtract-icon');
@@ -31,12 +31,12 @@ describe('ItemCount component', () => {
       background-color: #F1FAEE;
     `);
 
-    expect(articleName).toHaveTextContent(/tester's article/i);
+    /* expect(articleName).toHaveTextContent(/tester's article/i);
     expect(articleName).toHaveStyle(`
       margin: 1vh auto;
       display: flex;
       justify-content: center;
-    `);
+    `); */
 
     expect(addSubtractContainer).toHaveStyle(`
       box-sizing: border-box;
@@ -115,13 +115,12 @@ describe('ItemCount component', () => {
     `);
 
     expect(addToCartButton).toHaveStyle(`
-    height: 1.5rem;
-    margin: 0.5vh auto auto auto;
-    background-color: #F1FAEE;
-    border: 1px solid #A8DADC;
-    border-radius: 0.5em;
-    width: 27.5vw;
-    cursor: default;
+      height: 1.5rem;
+      margin: 0.5vh auto auto auto;
+      background-color: #F1FAEE;
+      border: 1px solid #A8DADC;
+      border-radius: 0.5em;
+      width: 27.5vw;
     `);
 
     window.alert = jest.fn();

@@ -108,7 +108,7 @@ export const ItemCount = ({ initial, min, max, article = 'Article name' }) => {
           backgroundColor: '#F1FAEE',
         }}
       >
-        <p
+        {/* <p
           style={{
             margin: '1vh auto',
             display: 'flex',
@@ -116,7 +116,7 @@ export const ItemCount = ({ initial, min, max, article = 'Article name' }) => {
           }}
         >
           {article}
-        </p>
+        </p> */}
         <CustomInput
           addClick={() => {
             setCount(count + 1);
@@ -140,7 +140,6 @@ export const ItemCount = ({ initial, min, max, article = 'Article name' }) => {
           border: '1px solid #A8DADC',
           borderRadius: '0.5em',
           width: '27.5vw',
-          cursor: isValidAmount ? 'default' : 'pointer',
         }}
         className='add-to-cart-button'
         data-testid='add-to-cart-button'

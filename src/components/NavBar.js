@@ -10,7 +10,7 @@ export const NavBar = () => {
         alignItems: 'center',
         backgroundColor: '#457B9D',
         width: '100%',
-        height: '5vh',
+        height: '3rem',
         position: 'sticky',
         top: 0,
       }}

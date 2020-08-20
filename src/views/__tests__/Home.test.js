@@ -17,7 +17,7 @@ describe('Home view', () => {
     expect(container).toMatchInlineSnapshot(`
       <div>
         <header
-          style="display: flex; align-items: center; background-color: rgb(69, 123, 157); width: 100%; height: 5vh; position: sticky; top: 0px;"
+          style="display: flex; align-items: center; background-color: rgb(69, 123, 157); width: 100%; height: 3rem; position: sticky; top: 0px;"
         >
           <nav
             style="display: flex; align-items: center; justify-content: space-around; width: 100%;"
@@ -115,11 +115,6 @@ describe('Home view', () => {
             data-testid="article-counter"
             style="background-color: rgb(241, 250, 238);"
           >
-            <p
-              style="margin: 1vh auto; display: flex; justify-content: center;"
-            >
-              My article
-            </p>
             <div
               data-testid="add-subtract-container"
               style="box-sizing: border-box; display: flex; justify-content: space-around;"
@@ -175,7 +170,7 @@ describe('Home view', () => {
           <button
             class="add-to-cart-button"
             data-testid="add-to-cart-button"
-            style="background: none; border: 1px solid #a8dadc; padding: 0px; cursor: default; outline: inherit; height: 1.5rem; margin: 0.5vh auto auto auto; background-color: rgb(241, 250, 238); border-radius: 0.5em; width: 27.5vw;"
+            style="background: none; border: 1px solid #a8dadc; padding: 0px; cursor: pointer; outline: inherit; height: 1.5rem; margin: 0.5vh auto auto auto; background-color: rgb(241, 250, 238); border-radius: 0.5em; width: 27.5vw;"
           >
             Add to cart
           </button>
