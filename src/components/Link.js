@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const StyledLink = ({ children, to }) => {
+const StyledLink = ({ children, to, style }) => {
   return (
     <Link
       style={{
+        ...style,
         textDecoration: 'none',
         color: 'black',
         display: 'flex',
-        alignItems: 'center',
-        textTransform: 'uppercase',
       }}
       to={to}
     >
@@ -22,6 +21,7 @@ const StyledLink = ({ children, to }) => {
 StyledLink.propTypes = {
   children: PropTypes.element.isRequired,
   to: PropTypes.string.isRequired,
+  style: PropTypes.object,
 };
 
 export default StyledLink;

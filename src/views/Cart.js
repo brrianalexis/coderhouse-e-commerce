@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { NavBar, ItemList } from '../components';
+import React from 'react';
+import { CartTable } from '../components';
 
-export const Catalog = () => {
+export const Cart = () => {
   const articlesMockData = [
     {
       id: '1',
@@ -86,40 +86,12 @@ export const Catalog = () => {
     },
   ];
 
-  const [articles, setArticles] = useState();
-  const [fetching, setFetching] = useState(true);
-
-  const getArticles = new Promise((res, rej) => {
-    setTimeout(() => {
-      setArticles(articlesMockData);
-      setFetching(false);
-      res();
-      // res(articles)
-    }, 2000);
-  });
-
-  useEffect(() => {
-    getArticles
-      .then(() => {
-        console.log('resolved');
-      })
-      .catch(() => {
-        console.log('rejected');
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <>
-      <NavBar />
-      <h1 style={{ color: '#1D3557', textAlign: 'center' }}>Catalog</h1>
-      {fetching ? (
-        <p style={{ color: '#1D3557', textAlign: 'center' }}>
-          Loading articles on sale...
-        </p>
-      ) : (
-        <ItemList articles={articles} />
-      )}
+      <h1 style={{ color: '#1D3557', textAlign: 'left', marginLeft: '2vw' }}>
+        My Cart
+      </h1>
+      <CartTable articles={articlesMockData} />
     </>
   );
 };

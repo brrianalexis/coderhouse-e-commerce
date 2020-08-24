@@ -12,7 +12,6 @@ describe('ItemCount component', () => {
       'article-counter-container'
     );
     const articleCounter = screen.getByTestId('article-counter');
-    // const articleName = screen.getByText(/tester's article/i);
     const addSubtractContainer = screen.getByTestId('add-subtract-container');
     const subtractButton = screen.getByTestId('subtract-button');
     const subtractIcon = screen.getByTestId('subtract-icon');
@@ -30,13 +29,6 @@ describe('ItemCount component', () => {
     expect(articleCounter).toHaveStyle(`
       background-color: #F1FAEE;
     `);
-
-    /* expect(articleName).toHaveTextContent(/tester's article/i);
-    expect(articleName).toHaveStyle(`
-      margin: 1vh auto;
-      display: flex;
-      justify-content: center;
-    `); */
 
     expect(addSubtractContainer).toHaveStyle(`
       box-sizing: border-box;

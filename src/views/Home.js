@@ -1,121 +1,124 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { NavBar, ItemCount } from '../components';
+import React, { useState, useEffect } from 'react';
+import { ItemList } from '../components';
 
-export const Home = ({ greeting }) => {
+export const Home = () => {
+  const articlesMockData = [
+    {
+      id: '1',
+      artist: 'Capital Cities',
+      albumTitle: 'In a Tidal Wave of Mistery',
+      albumArt:
+        'https://img.discogs.com/aQbuEE4HNnC3ynAXxhE6KVNYDIQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8500393-1462864818-7479.jpeg.jpg',
+      releaseYear: 2013,
+      price: '$4.499',
+    },
+    {
+      id: '2',
+      artist: 'Rejjie Snow',
+      albumTitle: 'Dear Annie',
+      albumArt:
+        'https://img.discogs.com/DLqyKHmFgui9rOQ0uL8rxrR45Wk=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11594378-1519088601-4662.png.jpg',
+      releaseYear: 2018,
+      price: '$4.799',
+    },
+    {
+      id: '3',
+      artist: 'Kota the Friend',
+      albumTitle: 'FOTO',
+      albumArt:
+        'https://ssla.ulximg.com/image/750x750/cover/1557948299_964fbafbbfccd4aa84490dd50c6e3719.jpg/de412bafa35f836902c092e30d36f752/1557948299_87db77ea12eff09cd01a717b654682bf.jpg',
+      releaseYear: 2019,
+      price: '$4.799',
+    },
+    {
+      id: '4',
+      artist: 'Aminé',
+      albumTitle: 'Limbo',
+      albumArt:
+        'https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_90,w_600/fl_lossy,pg_1/lllxnrwfcp892q8tcbyx/amine-limbo',
+      releaseYear: 2020,
+      price: '$4.999',
+    },
+    {
+      id: '5',
+      artist: 'Playboi Carti',
+      albumTitle: 'Die Lit',
+      albumArt:
+        'https://t2.genius.com/unsafe/1655x0/https%3A%2F%2Fimages.genius.com%2Fa6edc3b66b348994bc5217b05909951d.1000x1000x1.png',
+      releaseYear: 2018,
+      price: '$4.099',
+    },
+    {
+      id: '6',
+      artist: 'Post Malone',
+      albumTitle: "Hollywood's Bleeding",
+      albumArt:
+        'https://media.pitchfork.com/photos/5d71762bc7531e0008f96fd8/1:1/w_600/postmalone_hollywoodsbleeding.jpg',
+      releaseYear: 2019,
+      price: '$4.499',
+    },
+    {
+      id: '7',
+      artist: 'Pimp Flaco',
+      albumTitle: '23',
+      albumArt:
+        'https://tempusoficial.files.wordpress.com/2017/11/0e786bdbf4474f5ebbede98dbfa86ec7.jpg',
+      releaseYear: 2017,
+      price: '$2.999',
+    },
+    {
+      id: '8',
+      artist: 'Coral Casino',
+      albumTitle: 'Lejos',
+      albumArt:
+        'https://s.mxmcdn.net/images-storage/albums4/0/9/8/3/5/8/39853890_800_800.jpg',
+      releaseYear: 2018,
+      price: '$2.499',
+    },
+    {
+      id: '9',
+      artist: '6lack',
+      albumTitle: 'FREE 6LACK',
+      albumArt:
+        'https://img.discogs.com/847OKKDbDyBArGraK97_2D_L_3E=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-9990899-1489779869-8321.jpeg.jpg',
+      releaseYear: 2016,
+      price: '$4.499',
+    },
+  ];
+
+  const [articles, setArticles] = useState();
+  const [fetching, setFetching] = useState(true);
+
+  const getArticles = new Promise((res, rej) => {
+    setTimeout(() => {
+      setArticles(articlesMockData);
+      setFetching(false);
+      res();
+      // res(articles)
+    }, 2000);
+  });
+
+  useEffect(() => {
+    getArticles
+      .then(() => {
+        console.log('resolved');
+      })
+      .catch(() => {
+        console.log('rejected');
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
-      <NavBar />
-      <h1>Important Stuff</h1>
-      <p>{greeting}</p>
-      <ItemCount initial={2} min={2} max={10} article='My article' />
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-          porttitor lobortis risus, nec accumsan magna malesuada nec. Nullam
-          facilisis quam vel quam mattis, vitae mattis arcu porttitor. In
-          bibendum velit quis libero porta, sed ullamcorper nunc volutpat.
-          Integer placerat aliquam ornare. Aliquam maximus, neque id ornare
-          porta, ex nibh porttitor orci, non dapibus purus libero in elit.
-          Maecenas tincidunt arcu vel malesuada cursus. Sed ut facilisis est.
-          Sed euismod pulvinar placerat. Nulla facilisi. Suspendisse vel ante
-          sit amet sapien consequat consectetur. Quisque at neque ante. Maecenas
-          efficitur interdum neque, non cursus tortor blandit at.
+      <h1 style={{ color: '#1D3557', textAlign: 'center' }}>Products</h1>
+      {fetching ? (
+        <p style={{ color: '#1D3557', textAlign: 'center' }}>
+          Loading products on sale...
         </p>
-        <p>
-          Curabitur vitae orci quis nisi consequat facilisis non at sapien. Cras
-          feugiat quam sed egestas consequat. Maecenas vestibulum mollis
-          vehicula. Morbi ante ipsum, semper sed mattis ut, viverra non risus.
-          Sed in quam sit amet dolor fermentum consectetur ac ac lacus. Proin a
-          tortor dolor. Pellentesque eget urna orci. Maecenas bibendum
-          condimentum tortor, non semper diam. Nulla sed ipsum justo. Nam eget
-          pharetra neque, eget eleifend neque. Vivamus eu hendrerit lorem, non
-          tincidunt purus.
-        </p>
-        <p>
-          Suspendisse id metus imperdiet, malesuada libero quis, auctor libero.
-          In maximus in magna sit amet hendrerit. Nunc id urna rutrum, vehicula
-          est ut, scelerisque ex. Suspendisse pretium dui leo, vitae interdum
-          libero vestibulum id. Duis tempor purus commodo, condimentum magna et,
-          pretium orci. Donec pellentesque, turpis nec commodo sollicitudin,
-          purus elit ullamcorper metus, ac elementum dui quam a urna. Donec dui
-          nisl, laoreet id dapibus eu, condimentum ut nibh. Vestibulum ut tempus
-          est, vel tempor felis. Nulla placerat augue eu augue interdum, id
-          fringilla magna posuere. Sed cursus convallis lorem vitae ullamcorper.
-          Aliquam pellentesque in tortor id mattis. Etiam fermentum ipsum sem,
-          ut consequat nisi faucibus quis. Aenean rhoncus quis eros eget
-          aliquet.
-        </p>
-        <p>
-          Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-          per inceptos himenaeos. Nunc ac lorem vitae lectus sollicitudin
-          gravida nec at massa. Duis et velit sit amet lorem molestie lobortis.
-          Sed commodo nisl vitae nisi sagittis dapibus ut quis velit. Praesent
-          ut justo auctor, venenatis libero quis, feugiat augue. Curabitur
-          sagittis est eros, ac molestie libero semper eget. Nunc in enim id sem
-          condimentum faucibus vel eget massa.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-          porttitor lobortis risus, nec accumsan magna malesuada nec. Nullam
-          facilisis quam vel quam mattis, vitae mattis arcu porttitor. In
-          bibendum velit quis libero porta, sed ullamcorper nunc volutpat.
-          Integer placerat aliquam ornare. Aliquam maximus, neque id ornare
-          porta, ex nibh porttitor orci, non dapibus purus libero in elit.
-          Maecenas tincidunt arcu vel malesuada cursus. Sed ut facilisis est.
-          Sed euismod pulvinar placerat. Nulla facilisi. Suspendisse vel ante
-          sit amet sapien consequat consectetur. Quisque at neque ante. Maecenas
-          efficitur interdum neque, non cursus tortor blandit at.
-        </p>
-        <p>
-          Curabitur vitae orci quis nisi consequat facilisis non at sapien. Cras
-          feugiat quam sed egestas consequat. Maecenas vestibulum mollis
-          vehicula. Morbi ante ipsum, semper sed mattis ut, viverra non risus.
-          Sed in quam sit amet dolor fermentum consectetur ac ac lacus. Proin a
-          tortor dolor. Pellentesque eget urna orci. Maecenas bibendum
-          condimentum tortor, non semper diam. Nulla sed ipsum justo. Nam eget
-          pharetra neque, eget eleifend neque. Vivamus eu hendrerit lorem, non
-          tincidunt purus.
-        </p>
-        <p>
-          Suspendisse id metus imperdiet, malesuada libero quis, auctor libero.
-          In maximus in magna sit amet hendrerit. Nunc id urna rutrum, vehicula
-          est ut, scelerisque ex. Suspendisse pretium dui leo, vitae interdum
-          libero vestibulum id. Duis tempor purus commodo, condimentum magna et,
-          pretium orci. Donec pellentesque, turpis nec commodo sollicitudin,
-          purus elit ullamcorper metus, ac elementum dui quam a urna. Donec dui
-          nisl, laoreet id dapibus eu, condimentum ut nibh. Vestibulum ut tempus
-          est, vel tempor felis. Nulla placerat augue eu augue interdum, id
-          fringilla magna posuere. Sed cursus convallis lorem vitae ullamcorper.
-          Aliquam pellentesque in tortor id mattis. Etiam fermentum ipsum sem,
-          ut consequat nisi faucibus quis. Aenean rhoncus quis eros eget
-          aliquet.
-        </p>
-        <p>
-          Curabitur finibus molestie neque in facilisis. Curabitur cursus
-          vulputate interdum. Class aptent taciti sociosqu ad litora torquent
-          per conubia nostra, per inceptos himenaeos. Fusce dictum ligula vitae
-          fermentum vehicula. Fusce massa leo, feugiat et augue quis, porta
-          consectetur diam. Curabitur sit amet est ut purus mollis sagittis at
-          bibendum leo. Cras posuere auctor nulla et sodales. Etiam quis sapien
-          cursus, rhoncus mi eu, sagittis enim. Suspendisse potenti. Donec nec
-          sagittis nibh. Donec a hendrerit diam. Nunc viverra volutpat urna, eu
-          varius turpis tincidunt vel.
-        </p>
-        <p>
-          Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-          per inceptos himenaeos. Nunc ac lorem vitae lectus sollicitudin
-          gravida nec at massa. Duis et velit sit amet lorem molestie lobortis.
-          Sed commodo nisl vitae nisi sagittis dapibus ut quis velit. Praesent
-          ut justo auctor, venenatis libero quis, feugiat augue. Curabitur
-          sagittis est eros, ac molestie libero semper eget. Nunc in enim id sem
-          condimentum faucibus vel eget massa.
-        </p>
-      </div>
+      ) : (
+        <ItemList articles={articles} />
+      )}
     </>
   );
-};
-
-Home.propTypes = {
-  greeting: PropTypes.string,
 };

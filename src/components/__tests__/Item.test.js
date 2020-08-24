@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { Item } from '../';
 
@@ -15,14 +16,16 @@ describe('Item component', () => {
     };
 
     render(
-      <Item
-        key={albumId}
-        albumArt={albumArt}
-        albumTitle={albumTitle}
-        artist={artist}
-        releaseYear={releaseYear}
-        price={price}
-      />
+      <MemoryRouter>
+        <Item
+          key={albumId}
+          albumArt={albumArt}
+          albumTitle={albumTitle}
+          artist={artist}
+          releaseYear={releaseYear}
+          price={price}
+        />
+      </MemoryRouter>
     );
 
     expect(screen.getByTestId('Limbo-container')).toMatchInlineSnapshot(`

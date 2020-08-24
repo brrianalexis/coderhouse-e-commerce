@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, Link } from './';
-import { Home, Contact, Shop, Cart } from 'grommet-icons';
+import { Home, Contact, Cart } from 'grommet-icons';
 
 export const NavBar = () => {
   return (
@@ -13,6 +13,7 @@ export const NavBar = () => {
         height: '3rem',
         position: 'sticky',
         top: 0,
+        zIndex: 2,
       }}
     >
       <nav
@@ -23,23 +24,18 @@ export const NavBar = () => {
           width: '100%',
         }}
       >
-        <Link to='/'>
-          <Icon text='Home' data-testid='Home-Icon'>
+        <Link to='/' style={{ alignItems: 'center' }}>
+          <Icon text='HOME' data-testid='Home-Icon'>
             <Home color='#1D3557' style={{ margin: 5 }} />
           </Icon>
         </Link>
-        <Link to='/products'>
-          <Icon text='Products' data-testid='Shop-Icon'>
-            <Shop color='#1D3557' style={{ margin: 5 }} />
-          </Icon>
-        </Link>
-        <Link to='/contact'>
-          <Icon text='Contact Us' data-testid='Contact-Icon'>
+        <Link to='/contact' style={{ alignItems: 'center' }}>
+          <Icon text='CONTACT US' data-testid='Contact-Icon'>
             <Contact color='#1D3557' style={{ margin: 5 }} />
           </Icon>
         </Link>
-        <Link to='/cart'>
-          <Icon text='Cart' data-testid='Cart-Icon'>
+        <Link to='/cart' style={{ alignItems: 'center' }}>
+          <Icon text='CART' data-testid='Cart-Icon'>
             <Cart color='#1D3557' style={{ margin: 5 }} />
           </Icon>
         </Link>

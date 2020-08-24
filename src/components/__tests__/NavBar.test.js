@@ -14,7 +14,7 @@ describe('NavBar component', () => {
     const header = getByRole('banner');
     const nav = getByRole('navigation');
 
-    expect(header).toHaveTextContent(/home.*products.*contact us.*cart/i);
+    expect(header).toHaveTextContent(/home.*contact us.*cart/i);
     expect(header).toHaveStyle(`
         display: flex;
         align-items: center;
@@ -26,14 +26,14 @@ describe('NavBar component', () => {
     `);
     expect(header).toMatchInlineSnapshot(`
       <header
-        style="display: flex; align-items: center; background-color: rgb(69, 123, 157); width: 100%; height: 3rem; position: sticky; top: 0px;"
+        style="display: flex; align-items: center; background-color: rgb(69, 123, 157); width: 100%; height: 3rem; position: sticky; top: 0px; z-index: 2;"
       >
         <nav
           style="display: flex; align-items: center; justify-content: space-around; width: 100%;"
         >
           <a
             href="/"
-            style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
+            style="align-items: center; text-decoration: none; color: black; display: flex;"
           >
             <svg
               aria-label="Home"
@@ -48,31 +48,11 @@ describe('NavBar component', () => {
                 stroke-width="2"
               />
             </svg>
-            Home
-          </a>
-          <a
-            href="/products"
-            style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
-          >
-            <svg
-              aria-label="Shop"
-              class="StyledIcon-ofa7kd-0 hGmYEj"
-              style="margin: 5px;"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M4,7 L20,7 L20,23 L4,23 L4,7 Z M8,9 L8,5 C8,2.790861 9.79535615,1 12,1 L12,1 C14.209139,1 16,2.79535615 16,5 L16,9"
-                fill="none"
-                stroke="#000"
-                stroke-linecap="round"
-                stroke-width="2"
-              />
-            </svg>
-            Products
+            HOME
           </a>
           <a
             href="/contact"
-            style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
+            style="align-items: center; text-decoration: none; color: black; display: flex;"
           >
             <svg
               aria-label="Contact"
@@ -87,11 +67,11 @@ describe('NavBar component', () => {
                 stroke-width="2"
               />
             </svg>
-            Contact Us
+            CONTACT US
           </a>
           <a
             href="/cart"
-            style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
+            style="align-items: center; text-decoration: none; color: black; display: flex;"
           >
             <svg
               aria-label="Cart"
@@ -106,13 +86,12 @@ describe('NavBar component', () => {
                 stroke-width="2"
               />
             </svg>
-            Cart
+            CART
           </a>
         </nav>
       </header>
     `);
 
-    expect(nav).toHaveTextContent(/home.*products.*contact us.*cart/i);
     expect(nav).toHaveStyle(`
         display: flex;
         align-items: center;
@@ -125,7 +104,7 @@ describe('NavBar component', () => {
       >
         <a
           href="/"
-          style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
+          style="align-items: center; text-decoration: none; color: black; display: flex;"
         >
           <svg
             aria-label="Home"
@@ -140,31 +119,11 @@ describe('NavBar component', () => {
               stroke-width="2"
             />
           </svg>
-          Home
-        </a>
-        <a
-          href="/products"
-          style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
-        >
-          <svg
-            aria-label="Shop"
-            class="StyledIcon-ofa7kd-0 hGmYEj"
-            style="margin: 5px;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M4,7 L20,7 L20,23 L4,23 L4,7 Z M8,9 L8,5 C8,2.790861 9.79535615,1 12,1 L12,1 C14.209139,1 16,2.79535615 16,5 L16,9"
-              fill="none"
-              stroke="#000"
-              stroke-linecap="round"
-              stroke-width="2"
-            />
-          </svg>
-          Products
+          HOME
         </a>
         <a
           href="/contact"
-          style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
+          style="align-items: center; text-decoration: none; color: black; display: flex;"
         >
           <svg
             aria-label="Contact"
@@ -179,11 +138,11 @@ describe('NavBar component', () => {
               stroke-width="2"
             />
           </svg>
-          Contact Us
+          CONTACT US
         </a>
         <a
           href="/cart"
-          style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
+          style="align-items: center; text-decoration: none; color: black; display: flex;"
         >
           <svg
             aria-label="Cart"
@@ -198,7 +157,7 @@ describe('NavBar component', () => {
               stroke-width="2"
             />
           </svg>
-          Cart
+          CART
         </a>
       </nav>
     `);

@@ -1,20 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home, Catalog, ItemView } from './views';
+import { Home, ItemView, Cart } from './views';
+import { NavBar } from './components';
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/cart' exact component={Cart} />
         <Route
-          path='/'
+          path='/products/:artist/:albumTitle'
           exact
-          render={props => (
-            <Home {...props} greeting='Hi there, fellow coder!' />
-          )}
+          component={ItemView}
         />
-        <Route path='/products' exact component={Catalog} />
-        <Route path='/products/:id' exact component={ItemView} />
       </Switch>
     </Router>
   );

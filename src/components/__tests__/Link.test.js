@@ -18,15 +18,13 @@ describe('Link component', () => {
         text-decoration: none;
         color: black;
         display: flex;
-        align-items: center;
-        text-transform: uppercase;
     `);
     expect(link.getAttribute('href')).toMatch('/');
     expect(link).toHaveTextContent('Yay!');
     expect(link).toMatchInlineSnapshot(`
       <a
         href="/"
-        style="text-decoration: none; color: black; display: flex; align-items: center; text-transform: uppercase;"
+        style="text-decoration: none; color: black; display: flex;"
       >
         <p>
           Yay!

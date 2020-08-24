@@ -54,7 +54,5 @@ describe('ItemDetail component', () => {
         </p>
       </div>
     `);
-
-    screen.debug();
   });
 });

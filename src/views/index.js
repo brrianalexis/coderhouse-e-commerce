@@ -1,5 +1,5 @@
 import { Home } from './Home';
-import { Catalog } from './Catalog';
 import { ItemView } from './Item';
+import { Cart } from './Cart';
 
-export { Home, Catalog, ItemView };
+export { Home, ItemView, Cart };
