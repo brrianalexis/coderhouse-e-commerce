@@ -113,6 +113,12 @@ export const ItemView = () => {
     }, 3000);
   });
 
+  const [count, setCount] = useState(1);
+
+  const onCountChange = e => {
+    e.target.value === '' ? setCount(0) : setCount(parseInt(e.target.value));
+  };
+
   useEffect(() => {
     getArticle
       .then(() => console.log('resolved'))
@@ -145,6 +151,9 @@ export const ItemView = () => {
             min={1}
             max={10}
             article={`${article.albumTitle} by ${article.artist}`}
+            count={count}
+            setCount={setCount}
+            onCountChange={onCountChange}
           />
           <button
             style={{
@@ -159,7 +168,7 @@ export const ItemView = () => {
             }}
             className='add-to-cart-button'
           >
-            Buy
+            Buy {count}
           </button>
         </div>
       )}

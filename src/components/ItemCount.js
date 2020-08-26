@@ -76,14 +76,17 @@ const CustomInput = ({
   );
 };
 
-export const ItemCount = ({ initial, min, max, article = 'Article name' }) => {
-  const [count, setCount] = useState(initial);
+export const ItemCount = ({
+  min,
+  max,
+  article = 'Article name',
+  count,
+  setCount,
+  onCountChange,
+}) => {
+  //?   subir este estado
 
   const isValidAmount = min <= count <= max;
-
-  const onCountChange = e => {
-    e.target.value === '' ? setCount(0) : setCount(parseInt(e.target.value));
-  };
 
   const onAdd = count => {
     isValidAmount
@@ -162,8 +165,10 @@ CustomInput.propTypes = {
 };
 
 ItemCount.propTypes = {
-  initial: PropTypes.number,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   article: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  setCount: PropTypes.func.isRequired,
+  onCountChange: PropTypes.func.isRequired,
 };
