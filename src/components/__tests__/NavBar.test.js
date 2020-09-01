@@ -1,14 +1,22 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
+import { CartContext } from '../../context/CartContext';
+import { renderWithContext } from '../../context/TestContext';
 import { NavBar } from '../';
 
 describe('NavBar component', () => {
   it('should render a header containing a nav with the links to the principal sections of the site', () => {
-    const { getByRole } = render(
-      <MemoryRouter>
-        <NavBar />
-      </MemoryRouter>
+    const { getByRole } = renderWithContext(
+      // {values => (
+      <CartContext.Consumer>
+        {({ count }) => (
+          <MemoryRouter>
+            <NavBar />
+          </MemoryRouter>
+        )}
+      </CartContext.Consumer>
+      // )}
     );
 
     const header = getByRole('banner');
@@ -87,6 +95,11 @@ describe('NavBar component', () => {
               />
             </svg>
             CART
+            <span
+              style="height: 1.5rem; width: 1.5rem; background-color: rgb(168, 218, 220); border-radius: 50%; display: inline-block; text-align: center; align-self: end; font-weight: bold;"
+            >
+              0
+            </span>
           </a>
         </nav>
       </header>
@@ -158,6 +171,11 @@ describe('NavBar component', () => {
             />
           </svg>
           CART
+          <span
+            style="height: 1.5rem; width: 1.5rem; background-color: rgb(168, 218, 220); border-radius: 50%; display: inline-block; text-align: center; align-self: end; font-weight: bold;"
+          >
+            0
+          </span>
         </a>
       </nav>
     `);

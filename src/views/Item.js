@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ItemDetail, ItemCount } from '../components';
+import { CartContext } from '../context/CartContext';
 
 export const ItemView = () => {
   const cleanButtonStyle = {
@@ -109,8 +110,7 @@ export const ItemView = () => {
       setArticle(selectedArticle);
       setFetching(false);
       res();
-      // res(articleMockData);
-    }, 3000);
+    }, 500);
   });
 
   const [count, setCount] = useState(1);
@@ -127,51 +127,56 @@ export const ItemView = () => {
   }, []);
 
   return (
-    <>
-      <h1 style={{ color: '#1D3557', textAlign: 'center' }}>Item Detail</h1>
-      {fetching ? (
-        <p style={{ color: '#1D3557', textAlign: 'center' }}>
-          Loading article...
-        </p>
-      ) : (
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            flexDirection: 'column',
-            textAlign: 'center',
-            alignItems: 'center',
-            color: '#1D3557',
-          }}
-          data-testid='item-detail-container'
-        >
-          <ItemDetail article={article} />
-          <ItemCount
-            initial={1}
-            min={1}
-            max={10}
-            article={`${article.albumTitle} by ${article.artist}`}
-            count={count}
-            setCount={setCount}
-            onCountChange={onCountChange}
-          />
-          <button
-            style={{
-              ...cleanButtonStyle,
-              height: '1.5rem',
-              margin: 'auto',
-              marginTop: '0.5vh',
-              backgroundColor: '#F1FAEE',
-              border: '1px solid #A8DADC',
-              borderRadius: '0.5em',
-              width: '27.5vw',
-            }}
-            className='add-to-cart-button'
-          >
-            Buy {count}
-          </button>
-        </div>
+    <CartContext.Consumer>
+      {({ addItems }) => (
+        <>
+          <h1 style={{ color: '#1D3557', textAlign: 'center' }}>Item Detail</h1>
+          {fetching ? (
+            <p style={{ color: '#1D3557', textAlign: 'center' }}>
+              Loading article...
+            </p>
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                flexDirection: 'column',
+                textAlign: 'center',
+                alignItems: 'center',
+                color: '#1D3557',
+              }}
+              data-testid='item-detail-container'
+            >
+              <ItemDetail article={article} />
+              <ItemCount
+                initial={1}
+                min={1}
+                max={10}
+                article={`${article.albumTitle} by ${article.artist}`}
+                count={count}
+                setCount={setCount}
+                onCountChange={onCountChange}
+              />
+              <button
+                style={{
+                  ...cleanButtonStyle,
+                  height: '1.5rem',
+                  margin: 'auto',
+                  marginTop: '0.5vh',
+                  backgroundColor: '#F1FAEE',
+                  border: '1px solid #A8DADC',
+                  borderRadius: '0.5em',
+                  width: '27.5vw',
+                }}
+                className='add-to-cart-button'
+                onClick={() => addItems(article, count)}
+              >
+                Buy {count}
+              </button>
+            </div>
+          )}
+        </>
       )}
-    </>
+    </CartContext.Consumer>
   );
 };

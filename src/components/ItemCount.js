@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Add, Subtract } from 'grommet-icons';
 import PropTypes from 'prop-types';
 import './styles.css';
@@ -84,8 +84,6 @@ export const ItemCount = ({
   setCount,
   onCountChange,
 }) => {
-  //?   subir este estado
-
   const isValidAmount = min <= count <= max;
 
   const onAdd = count => {
@@ -111,15 +109,6 @@ export const ItemCount = ({
           backgroundColor: '#F1FAEE',
         }}
       >
-        {/* <p
-          style={{
-            margin: '1vh auto',
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          {article}
-        </p> */}
         <CustomInput
           addClick={() => {
             setCount(count + 1);

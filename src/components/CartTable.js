@@ -17,7 +17,6 @@ export const CartTable = ({ articles }) => {
       style={{
         display: 'flex',
         justifyContent: 'center',
-        border: '2px solid green',
       }}
     >
       <table
@@ -39,57 +38,81 @@ export const CartTable = ({ articles }) => {
           <th style={{ width: '10vw', border: '1px solid pink' }}>Remove</th>
           <th style={{ width: '10vw', border: '1px solid pink' }}>Price</th>
         </tr>
-        {/* map sobre artículos en carrito */}
-        <tr
-          style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            width: '80vw',
-            border: '2px solid pink',
-          }}
-        >
-          <td style={{ width: '40vw', textAlign: 'left' }}>
-            Rejjie Snow - Dear Annie
-          </td>
-          <td
+        {articles.map(article => (
+          <tr
+            key={article.id}
             style={{
-              width: '10vw',
-              border: '1px solid pink',
-              textAlign: 'center',
+              display: 'flex',
+              justifyContent: 'space-around',
+              width: '80vw',
+              border: '2px solid pink',
             }}
           >
-            $4.499
-          </td>
-          <td
-            style={{
-              width: '10vw',
-              border: '1px solid pink',
-              textAlign: 'center',
-            }}
-          >
-            1
-          </td>
-          <td
-            style={{
-              width: '10vw',
-              border: '1px solid pink',
-              textAlign: 'center',
-            }}
-          >
-            ❌
-          </td>
-          <td
-            style={{
-              width: '10vw',
-              border: '1px solid pink',
-              textAlign: 'center',
-            }}
-          >
-            $4.499
-          </td>
-        </tr>
+            <td style={{ width: '40vw', textAlign: 'left' }}>
+              {article.artist} - {article.albumTitle}
+            </td>
+            <td
+              style={{
+                width: '10vw',
+                border: '1px solid pink',
+                textAlign: 'center',
+              }}
+            >
+              {article.price}
+            </td>
+            <td
+              style={{
+                width: '10vw',
+                border: '1px solid pink',
+                textAlign: 'center',
+              }}
+            >
+              {article.amount}
+            </td>
+            <td
+              style={{
+                width: '10vw',
+                border: '1px solid pink',
+                textAlign: 'center',
+              }}
+            >
+              <button
+                style={{ ...cleanButtonStyle }}
+                aria-label='remove item from cart'
+                //TODO  handle onClick to remove item
+              >
+                <span role='img' aria-label='red cross mark emoji'>
+                  ❌
+                </span>
+              </button>
+            </td>
+            <td
+              style={{
+                width: '10vw',
+                border: '1px solid pink',
+                textAlign: 'center',
+              }}
+            >
+              {/* 
+              //TODO    modify price key to be a number
+               */}
+              $
+              {(
+                Number(article.price.split('$')[1].trim()) * article.amount
+              ).toFixed(3)}
+            </td>
+          </tr>
+        ))}
         <tfoot style={{ textAlign: 'right' }}>
-          <p>Subtotal $4.499</p>
+          {/* 
+          //TODO    total price
+          <p>
+            {Number(
+              articles.map(article =>
+                (article.price.split('$')[1].trim() * article.amount).toFixed(3)
+              )
+            )}
+          </p> */}
           <button
             style={{
               ...cleanButtonStyle,
