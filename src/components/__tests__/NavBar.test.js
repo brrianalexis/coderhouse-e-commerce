@@ -1,6 +1,5 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
 import { CartContext } from '../../context/CartContext';
 import { renderWithContext } from '../../context/TestContext';
 import { NavBar } from '../';

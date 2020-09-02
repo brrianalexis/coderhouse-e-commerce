@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CartTable } from '../components';
 import { CartContext } from '../context/CartContext';
 
@@ -14,7 +15,20 @@ export const Cart = () => {
           </h1>
           {items.length === 0 ? (
             <div>
-              <p style={{ textAlign: 'center' }}>The cart is empty</p>
+              <p style={{ textAlign: 'center', color: '#1D3557' }}>
+                The cart is currently empty.
+                <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                  <Link
+                    to='/'
+                    style={{
+                      color: '#1D3557',
+                    }}
+                  >
+                    Find something you like
+                  </Link>{' '}
+                  and add it to your cart.
+                </div>
+              </p>
             </div>
           ) : (
             <CartTable articles={items} />
