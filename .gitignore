@@ -10,6 +10,8 @@ node_modules
 /build
 
 # misc
+yarn.lock
+package-lock.json
 .env
 .DS_Store
 .env.local
