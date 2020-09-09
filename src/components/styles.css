@@ -21,3 +21,13 @@
 .album-art:hover {
   transform: scale(1.1);
 }
+
+.genre-link:hover {
+  background-color: #a8dadc;
+  border: 1px solid #f1faee;
+}
+
+.genre-link:visited {
+  background-color: #a8dadc;
+  border: 1px solid #f1faee;
+}

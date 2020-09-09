@@ -11,6 +11,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route path='/' exact component={Home} />
+          <Route path='/genre/:genre' exact component={Home} />
           <Route path='/cart' exact component={Cart} />
           <Route
             path='/products/:artist/:albumTitle'

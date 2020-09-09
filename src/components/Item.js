@@ -2,14 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from './';
 
-export const Item = ({
-  albumArt,
-  albumTitle,
-  releaseYear,
-  artist,
-  price,
-  // stock,
-}) => {
+export const Item = ({ albumArt, albumTitle, releaseYear, artist, price }) => {
   return (
     <Link to={`/products/${artist}/${albumTitle}`}>
       <div
@@ -27,6 +20,7 @@ export const Item = ({
           alt={`${albumTitle} album cover by ${artist}`}
           style={{
             border: '2px solid #457B9D',
+            margin: '0.5rem 0',
             width: '25vw',
           }}
           className='album-art'
@@ -35,7 +29,7 @@ export const Item = ({
         <p data-testid='album-title'>
           {albumTitle} ({releaseYear})
         </p>
-        <p data-testid='album-price'>{price}</p>
+        <p data-testid='album-price'>${price}</p>
       </div>
     </Link>
   );

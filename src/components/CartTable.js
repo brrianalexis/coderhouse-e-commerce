@@ -32,7 +32,7 @@ export const CartTable = ({ articles }) => {
             border: '2px solid pink',
           }}
         >
-          <th style={{ width: '40vw', textAlign: 'left' }}>Product</th>
+          <th style={{ width: '50vw', textAlign: 'left' }}>Product</th>
           <th style={{ width: '10vw', border: '1px solid pink' }}>Price</th>
           <th style={{ width: '10vw', border: '1px solid pink' }}>Quantity</th>
           <th style={{ width: '10vw', border: '1px solid pink' }}>Remove</th>
@@ -48,23 +48,38 @@ export const CartTable = ({ articles }) => {
               border: '2px solid pink',
             }}
           >
-            <td style={{ width: '40vw', textAlign: 'left' }}>
-              {article.artist} - {article.albumTitle}
-            </td>
             <td
               style={{
-                width: '10vw',
-                border: '1px solid pink',
-                textAlign: 'center',
+                width: '50vw',
+                textAlign: 'left',
+                display: 'flex',
+                alignItems: 'center',
               }}
             >
-              {article.price}
+              <img
+                src={article.albumArt}
+                style={{ width: '10vw', marginRight: '0.5rem' }}
+              />
+              {article.albumTitle}
             </td>
             <td
               style={{
                 width: '10vw',
                 border: '1px solid pink',
-                textAlign: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              ${article.price}
+            </td>
+            <td
+              style={{
+                width: '10vw',
+                border: '1px solid pink',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
               {article.amount}
@@ -73,7 +88,9 @@ export const CartTable = ({ articles }) => {
               style={{
                 width: '10vw',
                 border: '1px solid pink',
-                textAlign: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
               <button
@@ -90,29 +107,19 @@ export const CartTable = ({ articles }) => {
               style={{
                 width: '10vw',
                 border: '1px solid pink',
-                textAlign: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
-              {/* 
-              //TODO    modify price key to be a number
-               */}
-              $
-              {(
-                Number(article.price.split('$')[1].trim()) * article.amount
-              ).toFixed(3)}
+              ${article.price * article.amount}
             </td>
           </tr>
         ))}
         <tfoot style={{ textAlign: 'right' }}>
-          {/* 
-          //TODO    total price
           <p>
-            {Number(
-              articles.map(article =>
-                (article.price.split('$')[1].trim() * article.amount).toFixed(3)
-              )
-            )}
-          </p> */}
+            Subtotal: ${articles.reduce((a, b) => a + b.price * b.amount, 0)}
+          </p>
           <button
             style={{
               ...cleanButtonStyle,
