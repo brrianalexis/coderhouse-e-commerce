@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useFirebase } from '../firebase/useFirebase';
+import { CheckoutForm } from './';
 
 export const CartTable = ({ articles }) => {
   const cleanButtonStyle = {
@@ -12,16 +14,53 @@ export const CartTable = ({ articles }) => {
     outline: 'inherit',
   };
 
+  const checkout = async () => {
+    const buyer = {
+      name: '',
+      phone: '',
+      email: '',
+    };
+
+    const order = {
+      buyer, //TODO    un state en base a un formulario de contacto con los campos de arriba
+      items: [
+        {
+          title: 'item 1',
+          price: '',
+          quantity: 1,
+        },
+        {
+          title: 'item 2',
+          price: '',
+          quantity: 1,
+        },
+      ],
+      date: '', //TODO    firebase.firestore.FieldValue.serverTimestamp()
+      total: '',
+    };
+  };
+
+  const { createOrder } = useFirebase();
+
+  const [inCheckout, setInCheckout] = useState(false);
+
+  const handleCheckout = () => {
+    setInCheckout(!inCheckout);
+  };
+
+  const subtotal = articles.reduce((a, b) => a + b.price * b.amount, 0);
+
   return (
     <div
       style={{
         display: 'flex',
         justifyContent: 'center',
+        marginBottom: '2rem',
       }}
     >
       <table
         style={{
-          border: '2px solid purple',
+          margin: '2rem',
         }}
       >
         <tr
@@ -29,14 +68,24 @@ export const CartTable = ({ articles }) => {
             display: 'flex',
             justifyContent: 'space-around',
             width: '80vw',
-            border: '2px solid pink',
+            border: '2px solid #E63946',
           }}
         >
-          <th style={{ width: '50vw', textAlign: 'left' }}>Product</th>
-          <th style={{ width: '10vw', border: '1px solid pink' }}>Price</th>
-          <th style={{ width: '10vw', border: '1px solid pink' }}>Quantity</th>
-          <th style={{ width: '10vw', border: '1px solid pink' }}>Remove</th>
-          <th style={{ width: '10vw', border: '1px solid pink' }}>Price</th>
+          <th
+            style={{
+              width: '50vw',
+              textAlign: 'left',
+              border: '1px solid #E63946',
+            }}
+          >
+            Product
+          </th>
+          <th style={{ width: '10vw', border: '1px solid #E63946' }}>Price</th>
+          <th style={{ width: '10vw', border: '1px solid #E63946' }}>
+            Quantity
+          </th>
+          <th style={{ width: '10vw', border: '1px solid #E63946' }}>Remove</th>
+          <th style={{ width: '10vw', border: '1px solid #E63946' }}>Price</th>
         </tr>
         {articles.map(article => (
           <tr
@@ -45,7 +94,7 @@ export const CartTable = ({ articles }) => {
               display: 'flex',
               justifyContent: 'space-around',
               width: '80vw',
-              border: '2px solid pink',
+              border: '2px solid #E63946',
             }}
           >
             <td
@@ -54,18 +103,20 @@ export const CartTable = ({ articles }) => {
                 textAlign: 'left',
                 display: 'flex',
                 alignItems: 'center',
+                border: '1px solid #E63946',
               }}
             >
               <img
                 src={article.albumArt}
                 style={{ width: '10vw', marginRight: '0.5rem' }}
+                alt={`${article.albumTitle} album cover`}
               />
               {article.albumTitle}
             </td>
             <td
               style={{
                 width: '10vw',
-                border: '1px solid pink',
+                border: '1px solid #E63946',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -76,7 +127,7 @@ export const CartTable = ({ articles }) => {
             <td
               style={{
                 width: '10vw',
-                border: '1px solid pink',
+                border: '1px solid #E63946',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -87,7 +138,7 @@ export const CartTable = ({ articles }) => {
             <td
               style={{
                 width: '10vw',
-                border: '1px solid pink',
+                border: '1px solid #E63946',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -106,7 +157,7 @@ export const CartTable = ({ articles }) => {
             <td
               style={{
                 width: '10vw',
-                border: '1px solid pink',
+                border: '1px solid #E63946',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -117,9 +168,7 @@ export const CartTable = ({ articles }) => {
           </tr>
         ))}
         <tfoot style={{ textAlign: 'right' }}>
-          <p>
-            Subtotal: ${articles.reduce((a, b) => a + b.price * b.amount, 0)}
-          </p>
+          <p>Subtotal: ${subtotal}</p>
           <button
             style={{
               ...cleanButtonStyle,
@@ -132,9 +181,14 @@ export const CartTable = ({ articles }) => {
               borderRadius: '0.5em',
             }}
             className='add-to-cart-button'
+            disabled={inCheckout}
+            onClick={() => handleCheckout()}
           >
             Check Out
           </button>
+          {inCheckout ? (
+            <CheckoutForm articles={articles} totalPrice={subtotal} />
+          ) : null}
         </tfoot>
       </table>
     </div>

@@ -6,7 +6,7 @@ import { CartContext } from '../context/CartContext';
 export const Cart = () => {
   return (
     <CartContext.Consumer>
-      {({ items }) => (
+      {({ items /*  subtotal */ }) => (
         <>
           <h1
             style={{ color: '#1D3557', textAlign: 'left', marginLeft: '2vw' }}
@@ -31,7 +31,7 @@ export const Cart = () => {
               </p>
             </div>
           ) : (
-            <CartTable articles={items} />
+            <CartTable articles={items} /* subtotal={subtotal}  */ />
           )}
         </>
       )}

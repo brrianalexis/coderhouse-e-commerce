@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getFirestore } from './';
+import { getFirestore, firebase } from './';
 
 export const useFirebase = () => {
   const [items, setItems] = useState([]);
@@ -20,8 +20,6 @@ export const useFirebase = () => {
       setItems(items);
       setFetching(false);
     } catch (err) {
-      console.log('getAllItems -> err');
-      console.log('%c%s', 'color: #00e600', err);
       return err;
     }
   };
@@ -41,8 +39,6 @@ export const useFirebase = () => {
       setItems(items);
       setFetching(false);
     } catch (err) {
-      console.log('getItemsByGenre -> err');
-      console.log('%c%s', 'color: #ff0000', err);
       return err;
     }
   };
@@ -60,11 +56,44 @@ export const useFirebase = () => {
 
       setItem(theOneItem);
       setFetching(false);
-    } catch (err) {
-      console.log('getOneItem -> err');
-      console.log('%c%s', 'color: #00a3cc', err);
-    }
+    } catch (err) {}
+    console.log('useFirebase -> err', err);
   };
 
-  return { items, item, fetching, getAllItems, getItemsByGenre, getOneItem };
+  const createOrder = async (articles, totalPrice, buyerInfo) => {
+    const db = getFirestore();
+    const orders = db.collection('orders');
+
+    const cartItems = articles.map(article => ({
+      id: article.id,
+      quantity: article.amount,
+    }));
+
+    const { email, name, phone } = buyerInfo;
+
+    const newOrder = {
+      buyer: {
+        email,
+        name,
+        phone,
+      },
+      items: cartItems,
+      date: firebase.firestore.FieldValue.serverTimestamp(),
+      subtotal: totalPrice,
+    };
+    try {
+      const { id } = await orders.add(newOrder);
+      return id;
+    } catch (error) {}
+  };
+
+  return {
+    items,
+    item,
+    fetching,
+    getAllItems,
+    getItemsByGenre,
+    getOneItem,
+    createOrder,
+  };
 };

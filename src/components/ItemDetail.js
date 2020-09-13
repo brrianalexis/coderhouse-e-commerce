@@ -18,7 +18,7 @@ export const ItemDetail = ({
       <h2 className='item-detail-title'>
         {albumTitle} by {artist} - ({releaseYear})
       </h2>
-      <p>Price: {price}</p>
+      <p>Price: ${price}</p>
     </>
   );
 };

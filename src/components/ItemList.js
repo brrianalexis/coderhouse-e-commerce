@@ -10,6 +10,7 @@ export const ItemList = ({ articles }) => {
         justifyContent: 'center',
         flexDirection: 'row',
         flexWrap: 'wrap',
+        marginBottom: '2rem',
       }}
       data-testid='item-list-container'
     >

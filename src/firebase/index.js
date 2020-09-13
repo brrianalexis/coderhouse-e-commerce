@@ -12,10 +12,12 @@ const app = firebase.initializeApp({
   measurementId: `${process.env.REACT_APP_FIREBASE_MEASUREMENT_ID}`,
 });
 
-export const getFirebase = () => {
+const getFirebase = () => {
   return app;
 };
 
-export const getFirestore = () => {
+const getFirestore = () => {
   return firebase.firestore(app);
 };
+
+export { firebase, getFirestore, getFirebase };

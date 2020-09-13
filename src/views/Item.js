@@ -48,6 +48,7 @@ export const ItemView = () => {
                 textAlign: 'center',
                 alignItems: 'center',
                 color: '#1D3557',
+                marginBottom: '2rem',
               }}
               data-testid='item-detail-container'
             >

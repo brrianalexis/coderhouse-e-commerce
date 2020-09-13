@@ -7,6 +7,10 @@ export const CartProvider = ({ value, children }) => {
   const [items, setItems] = useState(value);
   const [count, setCount] = useState(0);
 
+  const getPrice = () => {
+    return items.reduce((prev, next) => prev + next.price * next.amount);
+  };
+
   const addItems = (item, amount) => {
     if (items.some(i => i.id === item.id)) {
       const repeatedIndex = items.findIndex(el => el.id === item.id);
@@ -15,7 +19,7 @@ export const CartProvider = ({ value, children }) => {
         ...itemsCopy[repeatedIndex],
         amount: itemsCopy[repeatedIndex].amount + amount,
       };
-      setItems([itemsCopy]);
+      setItems([...itemsCopy]);
     } else {
       setItems([
         ...items,
@@ -29,7 +33,7 @@ export const CartProvider = ({ value, children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ items, addItems, count }}>
+    <CartContext.Provider value={{ items, addItems, count, getPrice }}>
       {children}
     </CartContext.Provider>
   );

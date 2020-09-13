@@ -122,7 +122,7 @@ export const ItemCount = ({
           onCountChange={e => onCountChange(e)}
         />
       </div>
-      <button
+      {/* <button
         style={{
           ...cleanButtonStyle,
           height: '1.5rem',
@@ -139,7 +139,7 @@ export const ItemCount = ({
         disabled={!isValidAmount}
       >
         Add to cart
-      </button>
+      </button> */}
     </div>
   );
 };
