@@ -10,11 +10,25 @@ const AddOrSubtract = ({
   onCountChange,
 }) => {
   return (
-    <div>
+    <div className='flex items-center justify-between p-2 w-1/6 text-font'>
       <button onClick={subtractClick} disabled={value <= min}>
-        -
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+          stroke='currentColor'
+          className='h-4 text-font'
+        >
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth={2}
+            d='M20 12H4'
+          />
+        </svg>
       </button>
       <input
+        className='w-8 h-8 text-center'
         type='number'
         value={value}
         min={min}
@@ -23,7 +37,20 @@ const AddOrSubtract = ({
         disabled
       />
       <button onClick={addClick} disabled={value >= max}>
-        +
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+          stroke='currentColor'
+          className='h-5 text-font'
+        >
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth={2}
+            d='M12 6v6m0 0v6m0-6h6m-6 0H6'
+          />
+        </svg>
       </button>
     </div>
   );
@@ -31,18 +58,14 @@ const AddOrSubtract = ({
 
 export const ItemCount = ({ min, max, count, setCount, onCountChange }) => {
   return (
-    <div>
-      <div>
-        <AddOrSubtract
-          addClick={() => setCount(count + 1)}
-          subtractClick={() => setCount(count - 1)}
-          value={count}
-          min={min}
-          max={max}
-          onCountChange={e => onCountChange(e)}
-        />
-      </div>
-    </div>
+    <AddOrSubtract
+      addClick={() => setCount(count + 1)}
+      subtractClick={() => setCount(count - 1)}
+      value={count}
+      min={min}
+      max={max}
+      onCountChange={e => onCountChange(e)}
+    />
   );
 };
 

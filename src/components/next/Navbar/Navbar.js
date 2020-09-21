@@ -51,7 +51,7 @@ export const Navbar = () => {
                 </span>
               </Link>
               <button
-                className='flex items-center flex-shrink-0 text-font leading-none border rounded border-primary hover:border-transparent hover:text-background hover:bg-primary p-1'
+                className='flex items-center flex-shrink-0 text-font leading-none border rounded border-primary hover:border-transparent hover:text-background hover:bg-font p-1'
                 onClick={toggleVisibility}
                 ref={categoriesButton}
               >
@@ -73,7 +73,7 @@ export const Navbar = () => {
               </button>
               <Link
                 to='/cart'
-                className='flex items-center flex-shrink-0 text-font leading-none border rounded border-primary hover:border-transparent hover:text-background hover:bg-primary p-1'
+                className='flex items-center flex-shrink-0 text-font leading-none border rounded border-primary hover:border-transparent hover:text-background hover:bg-font p-1'
               >
                 <svg
                   className='h-8 mr-4'

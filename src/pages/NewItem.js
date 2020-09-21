@@ -18,17 +18,18 @@ export const NewItemPage = () => {
   useEffect(() => {
     getOneItem(albumTitle);
     console.log('🎣');
-  }, [albumTitle, getOneItem]);
+    //  eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <CartContext.Consumer>
       {({ addItems }) => (
-        <main className='flex items-center justify-center bg-lightBackground'>
-          <h1>Item Detail</h1>
+        <main className='flex flex-col items-center justify-center my-4 h-auto'>
+          <h1 className='text-font text-xl font-bold pb-4'>Item Detail</h1>
           {fetching ? (
-            <p>Loading article...</p>
+            <p className='text-font font-semibold'>Loading article...</p>
           ) : (
-            <div>
+            <>
               <ItemDetail article={item} />
               <ItemCount
                 initial={1}
@@ -39,10 +40,13 @@ export const NewItemPage = () => {
                 setCount={setCount}
                 onCountChange={onCountChange}
               />
-              <button onClick={() => addItems(item, count)}>
+              <button
+                className='text-font border rounded border-primary hover:border-transparent hover:text-background hover:bg-font p-2'
+                onClick={() => addItems(item, count)}
+              >
                 Add {count} to cart
               </button>
-            </div>
+            </>
           )}
         </main>
       )}

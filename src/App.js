@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import { Home, ItemView, Cart, NewItemPage } from './pages';
+import { Home, Cart, NewItemPage } from './pages';
 import { Navbar } from './components/next';
+import './index.css';
 
 function App() {
   return (
