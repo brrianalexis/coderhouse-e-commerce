@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CartTable } from '../components';
+import { CartTable } from '../components/Legacy';
 import { CartContext } from '../context/CartContext';
 
 export const Cart = () => {

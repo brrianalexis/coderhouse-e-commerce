@@ -76,24 +76,7 @@ const CustomInput = ({
   );
 };
 
-export const ItemCount = ({
-  min,
-  max,
-  article = 'Article name',
-  count,
-  setCount,
-  onCountChange,
-}) => {
-  const isValidAmount = min <= count <= max;
-
-  const onAdd = count => {
-    isValidAmount
-      ? alert(`${count} ${article} added to your cart!`)
-      : alert(
-          `Invalid ${article} amount. You must add between ${min} and ${max} to your cart`
-        );
-  };
-
+export const ItemCount = ({ min, max, count, setCount, onCountChange }) => {
   return (
     <div
       data-testid='article-counter-container'
@@ -122,24 +105,6 @@ export const ItemCount = ({
           onCountChange={e => onCountChange(e)}
         />
       </div>
-      {/* <button
-        style={{
-          ...cleanButtonStyle,
-          height: '1.5rem',
-          margin: 'auto',
-          marginTop: '0.5vh',
-          backgroundColor: '#F1FAEE',
-          border: '1px solid #A8DADC',
-          borderRadius: '0.5em',
-          width: '27.5vw',
-        }}
-        className='add-to-cart-button'
-        data-testid='add-to-cart-button'
-        onClick={() => onAdd(count, article)}
-        disabled={!isValidAmount}
-      >
-        Add to cart
-      </button> */}
     </div>
   );
 };

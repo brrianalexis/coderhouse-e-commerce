@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from './';
+import { Link } from '.';
 
 export const Item = ({ albumArt, albumTitle, releaseYear, artist, price }) => {
   return (

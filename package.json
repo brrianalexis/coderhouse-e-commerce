@@ -16,10 +16,16 @@
     "styled-components": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/index.css",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/index.css --watch",
+    "env:dev": "cross-env NODE_ENV=development",
+    "env:prod": "cross-env NODE_ENV=production",
+    "react-scripts:start": "timeout 5 && react-scripts start",
+    "react-scripts:build": "react-scripts build",
+    "start": "run-p env:dev watch:css react-scripts:start",
+    "build": "run-s env:prod build:css react-scripts:build",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom-fourteen",
     "test:coverage": "yarn test --coverage --watchAll=false",
     "eject": "react-scripts eject",
@@ -49,9 +55,17 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "@types/jest": "^26.0.13",
+    "autoprefixer": "^9.8.6",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.1.1"
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.2",
+    "prettier": "^2.1.1",
+    "purgecss": "^2.3.0",
+    "tailwindcss": "^1.8.9"
   }
 }

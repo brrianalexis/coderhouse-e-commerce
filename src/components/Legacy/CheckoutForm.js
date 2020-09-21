@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useFirebase } from '../firebase/useFirebase';
+import { useFirebase } from '../../firebase/useFirebase';
 
 export const CheckoutForm = ({ articles, totalPrice }) => {
   const [formValues, setFormValues] = useState({

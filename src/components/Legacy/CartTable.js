@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useFirebase } from '../firebase/useFirebase';
 import { CheckoutForm } from './';
 
 export const CartTable = ({ articles }) => {
@@ -13,34 +12,6 @@ export const CartTable = ({ articles }) => {
     cursor: 'pointer',
     outline: 'inherit',
   };
-
-  const checkout = async () => {
-    const buyer = {
-      name: '',
-      phone: '',
-      email: '',
-    };
-
-    const order = {
-      buyer, //TODO    un state en base a un formulario de contacto con los campos de arriba
-      items: [
-        {
-          title: 'item 1',
-          price: '',
-          quantity: 1,
-        },
-        {
-          title: 'item 2',
-          price: '',
-          quantity: 1,
-        },
-      ],
-      date: '', //TODO    firebase.firestore.FieldValue.serverTimestamp()
-      total: '',
-    };
-  };
-
-  const { createOrder } = useFirebase();
 
   const [inCheckout, setInCheckout] = useState(false);
 

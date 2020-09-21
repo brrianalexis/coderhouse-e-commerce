@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ItemList, Link } from '../components';
+import { ItemList, Link } from '../components/Legacy';
 import { useFirebase } from '../firebase/useFirebase';
-import '../components/styles.css';
+import '../components/Legacy/styles.css';
 
 export const Home = () => {
   const { getAllItems, getItemsByGenre, items, fetching } = useFirebase();

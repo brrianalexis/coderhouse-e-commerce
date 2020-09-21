@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import { Home, ItemView, Cart } from './views';
-import { NavBar } from './components';
+import { Home, ItemView, Cart, NewItemPage } from './pages';
+import { Navbar } from './components/next';
 
 function App() {
   return (
     <CartProvider value={[]}>
       <Router>
-        <NavBar />
+        <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/genre/:genre' exact component={Home} />
@@ -16,7 +16,7 @@ function App() {
           <Route
             path='/products/:artist/:albumTitle'
             exact
-            component={ItemView}
+            component={NewItemPage}
           />
         </Switch>
       </Router>

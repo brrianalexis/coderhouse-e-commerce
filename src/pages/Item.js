@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ItemDetail, ItemCount } from '../components';
+import { ItemDetail, ItemCount } from '../components/Legacy';
 import { useFirebase } from '../firebase/useFirebase';
 import { CartContext } from '../context/CartContext';
 

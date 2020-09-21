@@ -56,8 +56,9 @@ export const useFirebase = () => {
 
       setItem(theOneItem);
       setFetching(false);
-    } catch (err) {}
-    console.log('useFirebase -> err', err);
+    } catch (err) {
+      console.log('useFirebase -> err', err);
+    }
   };
 
   const createOrder = async (articles, totalPrice, buyerInfo) => {
@@ -84,7 +85,9 @@ export const useFirebase = () => {
     try {
       const { id } = await orders.add(newOrder);
       return id;
-    } catch (error) {}
+    } catch (err) {
+      console.log('createOrder -> err', err);
+    }
   };
 
   return {

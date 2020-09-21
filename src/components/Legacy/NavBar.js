@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon, Link } from './';
 import { Home, Contact, Cart } from 'grommet-icons';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../../context/CartContext';
 
 export const NavBar = () => {
   return (
