@@ -41,7 +41,7 @@ export const NewItemPage = () => {
                 onCountChange={onCountChange}
               />
               <button
-                className='text-font border rounded border-primary hover:border-transparent hover:text-background hover:bg-font p-2'
+                className='text-font hover:border-transparent hover:text-primary p-2'
                 onClick={() => addItems(item, count)}
               >
                 Add {count} to cart

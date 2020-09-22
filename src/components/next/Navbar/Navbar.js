@@ -25,7 +25,7 @@ export const Navbar = () => {
           <nav className='flex flex-col items-center flex-wrap bg-background p-6'>
             <div className='w-full flex justify-between items-center flex-shrink-0 text-font'>
               <Link
-                className='flex items-center flex-shrink-0 text-font'
+                className='flex items-center flex-shrink-0 text-font transition duration-500 ease-in-out transform hover:text-primary'
                 style={{
                   width: '171px',
                   height: '42px',
@@ -51,7 +51,7 @@ export const Navbar = () => {
                 </span>
               </Link>
               <button
-                className='flex items-center flex-shrink-0 text-font leading-none border rounded border-primary hover:border-transparent hover:text-background hover:bg-font p-1'
+                className='flex items-center flex-shrink-0 text-font leading-none transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105'
                 onClick={toggleVisibility}
                 ref={categoriesButton}
               >
@@ -73,7 +73,7 @@ export const Navbar = () => {
               </button>
               <Link
                 to='/cart'
-                className='flex items-center flex-shrink-0 text-font leading-none border rounded border-primary hover:border-transparent hover:text-background hover:bg-font p-1'
+                className='flex items-center flex-shrink-0 text-font leading-none transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105'
               >
                 <svg
                   className='h-8 mr-4'
