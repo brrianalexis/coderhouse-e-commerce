@@ -16,6 +16,11 @@ Para buildear el proyecto, correr el comando `npm run build`. Una vez que termin
 
 Con la librería **serve** instalada de manera global, ejecutando el comando `serve` dentro de la carpeta `./build`, va a levantarse un servidor en el puerto 5000 con el proyecto compilado.
 
+## Roadmap
+
+- Agregar integration tests con `testing-library`.
+- Agregar e2e tests con `cypress`.
+
 ## Librerías adicionales
 
 Para poder usar [Tailwind CSS](https://tailwindcss.com/) en el proyecto, tuve que instalar:
