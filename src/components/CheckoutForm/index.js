@@ -12,6 +12,7 @@ export const CheckoutForm = ({ items, subtotal }) => {
   const [order, setOrder] = useState({
     placed: false,
     id: null,
+    name: null,
   });
 
   const { createOrder } = useFirebase();
@@ -30,10 +31,11 @@ export const CheckoutForm = ({ items, subtotal }) => {
       formValues['repeat-email'] === formValues.email;
     if (isValid) {
       try {
-        const orderId = await createOrder(items, subtotal, buyerInfo);
+        const { id, name } = await createOrder(items, subtotal, buyerInfo);
         setOrder({
           placed: true,
-          id: orderId,
+          id: id,
+          name: name,
         });
       } catch (err) {
         alert('Oops!', err);
@@ -126,8 +128,7 @@ export const CheckoutForm = ({ items, subtotal }) => {
       {order.placed ? (
         //*   esto era un div, just in case
         <p className='flex justify-center items-center mx-8 mt-4 text-font'>
-          Thanks for shopping wih us, {formValues.name}! Your order ID is{' '}
-          {order.id}
+          Thanks for shopping wih us, {order.name}! Your order ID is {order.id}
         </p>
       ) : null}
     </div>

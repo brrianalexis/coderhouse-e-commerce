@@ -92,7 +92,14 @@ export const useFirebase = () => {
     };
     try {
       const { id } = await orders.add(newOrder);
-      return id;
+      const {
+        buyer: { name },
+      } = newOrder;
+
+      return {
+        id,
+        name,
+      };
     } catch (err) {
       console.log('createOrder -> err', err);
     }
