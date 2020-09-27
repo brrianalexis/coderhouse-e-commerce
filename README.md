@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Coderhouse e-commerce
 
-## Available Scripts
+## Setup del proyecto
 
-In the project directory, you can run:
+Una vez clonado el proyecto, correr `npm run setup` o `yarn setup`. Este script se va a encargar de instalar dependencias, ejecutar el linter, correr los tests emitiendo el coverage y buildear el código en modo producción.
 
-### `yarn start`
+### Desarrollo
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para levantar el proyecto en modo desarrollo, basta con correr el comando `npm start` o `yarn start` desde la terminal. Este script corre en paralelo múltiples scripts: setea el entorno de node como desarrollo, observa el CSS por cambios y le da 5 segundos para correr el script `react-scripts start` tradicional.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+> Nota: En caso de usar un OS distinto a Windows, es posible que sea necesario editar la línea 21 de `package.json`, cambiando `timeout` por `sleep` para que el proyecto compile.
 
-### `yarn test`
+### Producción
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para buildear el proyecto, correr el comando `npm run build`. Una vez que termina de buildear el código, puede servirse usando (por ejemplo) la librería [serve](https://www.npmjs.com/package/serve) desarrollada por [Vercel](https://vercel.com/).
 
-### `yarn build`
+Con la librería **serve** instalada de manera global, ejecutando el comando `serve` dentro de la carpeta `./build`, va a levantarse un servidor en el puerto 5000 con el proyecto compilado.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Roadmap
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Agregar integration tests con `testing-library`.
+- Agregar e2e tests con `cypress`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Librerías adicionales
 
-### `yarn eject`
+Para poder usar [Tailwind CSS](https://tailwindcss.com/) en el proyecto, tuve que instalar:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [tailwindcss](#tailwindcss)
+- [postcss](#postcss-cli)
+- [purgecss](#purgecss)
+- [@fullhuman/postcss-purgecss](#@fullhuman/postcss-purgecss)
+- [autoprefixer](#autoprefixer)
+- [cssnano](#cssnano)
+- [cross-env](#cross-env)
+- [npm-run-all](#npm-run-all)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### [tailwindcss](https://github.com/tailwindlabs/tailwindcss)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Tailwind CSS es un framework de CSS basado en utilidades. No provee componentes ya armados, sino que provee clases utilitarias para manejar distintas propiedades de CSS facilmente. Además de esto, viene con un archivo de configuración que exporta un objeto de JS donde podemos definir nuestros propios valores para distintas propiedades, paletas de colores, etc.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Aproveché la oportunidad para probar el framework. Me parece mucho más interesante que esté basado en utilidades y no en componentes. Empuja más la creatividad en lugar del copy-paste, aparte de no volverte loco a la hora de querer darle tu propia impronta a la UI.
 
-## Learn More
+### [postcss-cli](https://github.com/postcss/postcss-cli)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+PostCSS es una herramienta que permite utilizar plugins escritos en JS para darle superpoderes a tu CSS. En este caso usé 3 plugins (purgecss, autoprefixer y cssnano).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### [purgecss](https://github.com/FullHuman/purgecss)
 
-### Code Splitting
+PurgeCSS analiza el contenido de mis archivos para determinar qué JS de todo el framework de CSS (en mi caso, Tailwind) estoy usando. A la hora de buildear el proyecto, se minimizan las líneas de CSS y se mantienen únicamente las líneas pertinentes a los selectores y classnames que usé.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### [@fullhuman/postcss-purgecss](https://github.com/FullHuman/purgecss/tree/master/packages/postcss-purgecss)
 
-### Analyzing the Bundle Size
+Esto es el plugin de PurgeCSS para PostCSS.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### [autoprefixer](https://github.com/postcss/autoprefixer)
 
-### Making a Progressive Web App
+Autoprefixer es un plugin de PostCSS que se encarga de parsear nuestro CSS para agregar prefixes de distintos vendors a nuestras reglas de CSS, basándose en datos de [Can I Use](https://caniuse.com/) para facilitar la compatibilidad cross-browser.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### [cssnano](https://github.com/cssnano/cssnano)
 
-### Advanced Configuration
+El último plugin de PostCSS que uso. Su finalidad es compactar nuestro CSS.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### [cross-env](https://github.com/kentcdodds/cross-env)
 
-### Deployment
+Cross-Env es una herramienta muy popular desarrollada por Kent C. Dodds pensada para setear variables de ambiente con facilidad. En mis scripts, lo uso para determinar si el entorno es de desarrollo o producción.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### [npm-run-all](https://github.com/mysticatea/npm-run-all)
 
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+npm-run-all es una herramienta de terminal para poder ejecutar scripts de npm de manera paralela o secuencial. Lo uso para mis scripts de start y build, para setear los ambientes, mirar o buildear el CSS y correr el script start o build de react-scripts.

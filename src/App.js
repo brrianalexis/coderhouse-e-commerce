@@ -1,23 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import { Home, ItemView, Cart } from './views';
-import { NavBar } from './components';
+import { ItemPage, Home, Cart } from './pages';
+import { Navbar } from './components';
+import './index.css';
 
 function App() {
   return (
     <CartProvider value={[]}>
       <Router>
-        <NavBar />
+        <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/genre/:genre' exact component={Home} />
+          <Route path='/categories/:genre' exact component={Home} />
           <Route path='/cart' exact component={Cart} />
-          <Route
-            path='/products/:artist/:albumTitle'
-            exact
-            component={ItemView}
-          />
+          <Route path='/item/:id' exact component={ItemPage} />
         </Switch>
       </Router>
     </CartProvider>

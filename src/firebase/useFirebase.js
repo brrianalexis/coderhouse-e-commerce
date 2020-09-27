@@ -43,10 +43,12 @@ export const useFirebase = () => {
     }
   };
 
-  const getOneItem = async title => {
+  const getOneItem = async id => {
     try {
       const db = getFirestore();
-      const item = db.collection('items').where('albumTitle', '==', title);
+      const item = db
+        .collection('items')
+        .where(firebase.firestore.FieldPath.documentId(), '==', id);
       const querySnapshot = await item.get();
 
       const theOneItem = querySnapshot.docs.map(doc => ({
@@ -54,10 +56,16 @@ export const useFirebase = () => {
         id: doc.id,
       }))[0];
 
-      setItem(theOneItem);
-      setFetching(false);
-    } catch (err) {}
-    console.log('useFirebase -> err', err);
+      if (!theOneItem) {
+        setItem(null);
+        setFetching(false);
+      } else {
+        setItem(theOneItem);
+        setFetching(false);
+      }
+    } catch (err) {
+      console.log('useFirebase -> err', err);
+    }
   };
 
   const createOrder = async (articles, totalPrice, buyerInfo) => {
@@ -80,11 +88,14 @@ export const useFirebase = () => {
       items: cartItems,
       date: firebase.firestore.FieldValue.serverTimestamp(),
       subtotal: totalPrice,
+      status: 'Placed',
     };
     try {
       const { id } = await orders.add(newOrder);
       return id;
-    } catch (error) {}
+    } catch (err) {
+      console.log('createOrder -> err', err);
+    }
   };
 
   return {
