@@ -32,8 +32,16 @@ export const CartProvider = ({ value, children }) => {
     setCount(count + amount);
   };
 
+  const removeItem = itemToRemove => {
+    const updatedItems = items.filter(item => item !== itemToRemove);
+    setItems([...updatedItems]);
+    setCount(count - itemToRemove.amount);
+  };
+
   return (
-    <CartContext.Provider value={{ items, addItems, count, getPrice }}>
+    <CartContext.Provider
+      value={{ items, addItems, count, getPrice, removeItem }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -3,5 +3,6 @@ import { ItemView } from './Item';
 import { Cart } from './Cart';
 import { NewItemPage } from './NewItem';
 import { NewHome } from './NewHome';
+import { NewCart } from './NewCart';
 
-export { Home, ItemView, Cart, NewItemPage, NewHome };
+export { Home, ItemView, Cart, NewItemPage, NewHome, NewCart };

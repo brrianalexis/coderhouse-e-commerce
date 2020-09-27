@@ -8,6 +8,7 @@ export const ItemList = ({ items }) => {
       {items.map(item => (
         <Item
           key={item.id}
+          id={item.id}
           artist={item.artist}
           albumTitle={item.albumTitle}
           releaseYear={item.releaseYear}

@@ -5,7 +5,7 @@ import { useFirebase } from '../firebase/useFirebase';
 import { CartContext } from '../context/CartContext';
 
 export const NewItemPage = () => {
-  const { albumTitle } = useParams();
+  const { id } = useParams();
 
   const { fetching, getOneItem, item } = useFirebase();
 
@@ -16,7 +16,7 @@ export const NewItemPage = () => {
   };
 
   useEffect(() => {
-    getOneItem(albumTitle);
+    getOneItem(id);
     console.log('🎣');
     //  eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -28,6 +28,8 @@ export const NewItemPage = () => {
           <h1 className='text-font text-xl font-bold pb-4'>Item Detail</h1>
           {fetching ? (
             <p className='text-font font-semibold'>Loading article...</p>
+          ) : item === null ? (
+            <p className='text-font font-semibold'>The item does not exist</p>
           ) : (
             <>
               <ItemDetail article={item} />

@@ -11,7 +11,7 @@ export const NewHome = () => {
     genre === undefined ? getAllItems() : getItemsByGenre(genre);
     console.log('🎣');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fetching, genre]);
+  }, [fetching]);
 
   return (
     <main className='flex flex-col items-center justify-center my-4 h-auto'>
@@ -19,6 +19,10 @@ export const NewHome = () => {
       {fetching ? (
         <p style={{ color: '#1D3557', textAlign: 'center' }}>
           Loading products on sale...
+        </p>
+      ) : items.length === 0 ? (
+        <p className='text-font font-semibold'>
+          Category {genre} does not exist
         </p>
       ) : (
         <ItemList items={items} />

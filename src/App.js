@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import { Cart, NewItemPage, NewHome } from './pages';
+import { NewItemPage, NewHome, NewCart } from './pages';
 import { Navbar } from './components/next';
 import './index.css';
 
@@ -12,13 +12,9 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' exact component={NewHome} />
-          <Route path='/genre/:genre' exact component={NewHome} />
-          <Route path='/cart' exact component={Cart} />
-          <Route
-            path='/products/:artist/:albumTitle'
-            exact
-            component={NewItemPage}
-          />
+          <Route path='/categories/:genre' exact component={NewHome} />
+          <Route path='/cart' exact component={NewCart} />
+          <Route path='/item/:id' exact component={NewItemPage} />
         </Switch>
       </Router>
     </CartProvider>

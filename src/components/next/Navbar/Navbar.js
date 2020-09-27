@@ -102,28 +102,31 @@ export const Navbar = () => {
                 All
               </NavLink>
               <NavLink
-                to='/genre/hip-hop'
+                to='/categories/hip-hop'
                 activeClassName='text-font font-bold'
               >
                 Hip-hop
               </NavLink>
-              <NavLink to='/genre/trap' activeClassName='text-font font-bold'>
+              <NavLink
+                to='/categories/trap'
+                activeClassName='text-font font-bold'
+              >
                 Trap
               </NavLink>
               <NavLink
-                to='/genre/indie pop'
+                to='/categories/indie pop'
                 activeClassName='text-font font-bold'
               >
                 Indie pop
               </NavLink>
               <NavLink
-                to='/genre/prog-rock'
+                to='/categories/prog-rock'
                 activeClassName='text-font font-bold'
               >
                 Progressive rock
               </NavLink>
               <NavLink
-                to='/genre/post-hardcore'
+                to='/categories/post-hardcore'
                 activeClassName='text-font font-bold'
               >
                 Post-hardcore
