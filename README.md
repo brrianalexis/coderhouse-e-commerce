@@ -2,7 +2,7 @@
 
 ## Setup del proyecto
 
-Una vez clonado el proyecto, correr `npm run setup` o `yarn setup`. Este script se va a encargar de instalar dependencias, ejecutar el linter, correr los tests emitiendo el coverage y buildear el código en modo producción.
+Una vez clonado el proyecto, correr `npm run setup` o `yarn setup`. Este script se va a encargar de instalar dependencias y buildear el código en modo producción.
 
 ### Desarrollo
 

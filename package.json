@@ -24,10 +24,8 @@
     "build": "run-s env:prod build:css react-scripts:build",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "test": "react-scripts test --env=jsdom-fourteen",
-    "test:coverage": "yarn test --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "setup": "npm install && npm run lint && npm test --coverage && npm run build"
+    "setup": "npm install && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
