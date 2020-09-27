@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import { NewItemPage, NewHome, NewCart } from './pages';
-import { Navbar } from './components/next';
+import { ItemPage, Home, Cart } from './pages';
+import { Navbar } from './components';
 import './index.css';
 
 function App() {
@@ -11,10 +11,10 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path='/' exact component={NewHome} />
-          <Route path='/categories/:genre' exact component={NewHome} />
-          <Route path='/cart' exact component={NewCart} />
-          <Route path='/item/:id' exact component={NewItemPage} />
+          <Route path='/' exact component={Home} />
+          <Route path='/categories/:genre' exact component={Home} />
+          <Route path='/cart' exact component={Cart} />
+          <Route path='/item/:id' exact component={ItemPage} />
         </Switch>
       </Router>
     </CartProvider>

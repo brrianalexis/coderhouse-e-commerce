@@ -1,86 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ItemDetail, ItemCount } from '../components/Legacy';
+import { ItemDetail, ItemCount } from '../components';
 import { useFirebase } from '../firebase/useFirebase';
 import { CartContext } from '../context/CartContext';
 
-export const ItemView = () => {
-  const cleanButtonStyle = {
-    background: 'none',
-    color: 'inherit',
-    border: 'none',
-    padding: 0,
-    font: 'inherit',
-    cursor: 'pointer',
-    outline: 'inherit',
-  };
+export const ItemPage = () => {
+  const { id } = useParams();
 
-  const { albumTitle } = useParams();
+  const { fetching, getOneItem, item } = useFirebase();
 
   const [count, setCount] = useState(1);
-  const { fetching, item, getOneItem } = useFirebase();
 
   const onCountChange = e => {
-    e.target.value === '' ? setCount(0) : setCount(parseInt(e.target.value));
+    e.target.value === '' ? setCount(0) : setCount(Number(e.target.value));
   };
 
   useEffect(() => {
-    getOneItem(albumTitle);
-    console.log('⚡');
+    getOneItem(id);
     //  eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <CartContext.Consumer>
       {({ addItems }) => (
-        <>
-          <h1 style={{ color: '#1D3557', textAlign: 'center' }}>Item Detail</h1>
+        <main className='flex flex-col items-center justify-center my-4 h-auto'>
+          <h1 className='text-font text-xl font-bold pb-4'>Item Detail</h1>
           {fetching ? (
-            <p style={{ color: '#1D3557', textAlign: 'center' }}>
-              Loading article...
-            </p>
+            <p className='text-font font-semibold'>Loading article...</p>
+          ) : item === null ? (
+            <p className='text-font font-semibold'>The item does not exist</p>
           ) : (
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                flexDirection: 'column',
-                textAlign: 'center',
-                alignItems: 'center',
-                color: '#1D3557',
-                marginBottom: '2rem',
-              }}
-              data-testid='item-detail-container'
-            >
-              <ItemDetail article={item} />
+            <>
+              <ItemDetail item={item} />
               <ItemCount
                 initial={1}
                 min={1}
                 max={10}
-                article={`${item.albumTitle} by ${item.artist}`}
                 count={count}
                 setCount={setCount}
                 onCountChange={onCountChange}
               />
               <button
-                style={{
-                  ...cleanButtonStyle,
-                  height: '1.5rem',
-                  margin: 'auto',
-                  marginTop: '0.5vh',
-                  backgroundColor: '#F1FAEE',
-                  border: '1px solid #A8DADC',
-                  borderRadius: '0.5em',
-                  width: '27.5vw',
-                }}
-                className='add-to-cart-button'
+                className='text-font hover:border-transparent hover:text-primary p-2'
                 onClick={() => addItems(item, count)}
               >
-                Buy {count}
+                Add {count} to cart
               </button>
-            </div>
+            </>
           )}
-        </>
+        </main>
       )}
     </CartContext.Consumer>
   );

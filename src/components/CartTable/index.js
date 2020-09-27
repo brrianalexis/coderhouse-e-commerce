@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { CheckoutForm } from '../';
-import { CartContext } from '../../../context/CartContext';
+import { CartContext } from '../../context/CartContext';
 
 export const CartTable = ({ items }) => {
   const [inCheckout, setInCheckout] = useState(false);
@@ -9,7 +9,6 @@ export const CartTable = ({ items }) => {
   const handleCheckout = () => {
     setInCheckout(!inCheckout);
   };
-
   const { removeItem } = useContext(CartContext);
 
   const subtotal = items.reduce((a, b) => a + b.price * b.amount, 0);

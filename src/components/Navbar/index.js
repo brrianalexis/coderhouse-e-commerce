@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { CartContext } from '../../../context/CartContext';
+import { CartContext } from '../../context/CartContext';
 
 export const Navbar = () => {
   const [visibility, setVisibility] = useState('hidden');

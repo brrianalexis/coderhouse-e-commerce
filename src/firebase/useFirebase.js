@@ -88,7 +88,7 @@ export const useFirebase = () => {
       items: cartItems,
       date: firebase.firestore.FieldValue.serverTimestamp(),
       subtotal: totalPrice,
-      state: 'Placed',
+      status: 'Placed',
     };
     try {
       const { id } = await orders.add(newOrder);
