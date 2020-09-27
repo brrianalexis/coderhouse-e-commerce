@@ -32,12 +32,11 @@ export const NewItemPage = () => {
             <p className='text-font font-semibold'>The item does not exist</p>
           ) : (
             <>
-              <ItemDetail article={item} />
+              <ItemDetail item={item} />
               <ItemCount
                 initial={1}
                 min={1}
                 max={10}
-                article={`${item.albumTitle} by ${item.artist}`}
                 count={count}
                 setCount={setCount}
                 onCountChange={onCountChange}
