@@ -81,7 +81,6 @@ AddOrSubtract.propTypes = {
 ItemCount.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
-  article: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
   setCount: PropTypes.func.isRequired,
   onCountChange: PropTypes.func.isRequired,

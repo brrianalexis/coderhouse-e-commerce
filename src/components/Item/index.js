@@ -31,5 +31,5 @@ Item.propTypes = {
   albumTitle: PropTypes.string,
   releaseYear: PropTypes.number,
   artist: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
 };
