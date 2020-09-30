@@ -12,7 +12,7 @@ export const Cart = () => {
             <h1 className='text-font text-xl font-bold pb-4'>My Cart</h1>
             {items.length === 0 ? (
               <div>
-                <p className='text-center text-font'>
+                <div className='text-center text-font'>
                   The cart is currently empty.
                   <div className='text-center mt-2'>
                     <Link to='/' className='text-primary hover:font-semibold'>
@@ -20,7 +20,7 @@ export const Cart = () => {
                     </Link>
                     and add it to your cart
                   </div>
-                </p>
+                </div>
               </div>
             ) : (
               <CartTable items={items} />

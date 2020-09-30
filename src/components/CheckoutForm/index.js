@@ -4,10 +4,10 @@ import { useFirebase } from '../../firebase/useFirebase';
 
 export const CheckoutForm = ({ items, subtotal }) => {
   const [formValues, setFormValues] = useState({
-    name: null,
-    phone: null,
-    email: null,
-    'repeat-email': null,
+    name: '',
+    phone: '',
+    email: '',
+    'repeat-email': '',
   });
   const [order, setOrder] = useState({
     placed: false,
@@ -26,6 +26,8 @@ export const CheckoutForm = ({ items, subtotal }) => {
 
   const handleSubmit = async (items, subtotal, buyerInfo) => {
     const isValid =
+      formValues.name.length >= 2 &&
+      formValues.phone.length >= 8 &&
       formValues.email !== null &&
       formValues.email.length > 7 &&
       formValues['repeat-email'] === formValues.email;
@@ -126,7 +128,6 @@ export const CheckoutForm = ({ items, subtotal }) => {
         </div>
       </form>
       {order.placed ? (
-        //*   esto era un div, just in case
         <p className='flex justify-center items-center mx-8 mt-4 text-font'>
           Thanks for shopping wih us, {order.name}! Your order ID is {order.id}
         </p>

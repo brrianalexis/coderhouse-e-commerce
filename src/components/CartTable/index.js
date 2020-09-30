@@ -14,7 +14,7 @@ export const CartTable = ({ items }) => {
   const subtotal = items.reduce((a, b) => a + b.price * b.amount, 0);
 
   return (
-    <div className='flex justify-center mb-8'>
+    <div className='flex flex-col justify-center mb-8'>
       <table className='m-8'>
         <thead>
           <tr
@@ -79,7 +79,6 @@ export const CartTable = ({ items }) => {
               >
                 <button
                   aria-label='remove item from cart'
-                  //TODO    make this work
                   onClick={() => removeItem(item)}
                 >
                   <span role='img' aria-label='red cross mark emoji'>
@@ -98,20 +97,18 @@ export const CartTable = ({ items }) => {
             </tr>
           ))}
         </tbody>
-        <tfoot className='text-right'>
-          <p className='font-bold pt-2'>Subtotal ${subtotal}</p>
-          <button
-            className='h-8 m-auto mt-2 p-2 text-font transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:text-primary'
-            disabled={inCheckout}
-            onClick={() => handleCheckout()}
-          >
-            Check Out
-          </button>
-          {inCheckout ? (
-            <CheckoutForm items={items} subtotal={subtotal} />
-          ) : null}
-        </tfoot>
       </table>
+      <div className='text-right mr-8'>
+        <p className='font-bold pt-2'>Subtotal ${subtotal}</p>
+        <button
+          className='h-8 m-auto mt-2 p-2 text-font transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:text-primary'
+          disabled={inCheckout}
+          onClick={() => handleCheckout()}
+        >
+          Check Out
+        </button>
+        {inCheckout ? <CheckoutForm items={items} subtotal={subtotal} /> : null}
+      </div>
     </div>
   );
 };
