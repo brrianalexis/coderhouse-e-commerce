@@ -16,84 +16,88 @@ export const CartTable = ({ items }) => {
   return (
     <div className='flex justify-center mb-8'>
       <table className='m-8'>
-        <tr
-          className='flex justify-around text-font border-b-2 border-primary'
-          style={{
-            width: '80vw',
-          }}
-        >
-          <th className='text-left' style={{ width: '50vw' }}>
-            Product
-          </th>
-          <th style={{ width: '10vw' }}>Price</th>
-          <th style={{ width: '10vw' }}>Quantity</th>
-          <th style={{ width: '10vw' }}>Remove</th>
-          <th style={{ width: '10vw' }}>Price</th>
-        </tr>
-        {items.map(item => (
+        <thead>
           <tr
-            className='flex justify-around border-b-2 border-primary'
-            key={item.id}
+            className='flex justify-around text-font border-b-2 border-primary'
             style={{
               width: '80vw',
             }}
           >
-            <td
-              className='flex items-center text-left font-semibold'
-              style={{
-                width: '50vw',
-              }}
-            >
-              <img
-                className='mr-2'
-                src={item.albumArt}
-                alt={`${item.albumTitle} album cover`}
-                style={{ width: '10vw' }}
-              />
-              {item.albumTitle} by {item.artist}
-            </td>
-            <td
-              className='flex justify-center items-center'
-              style={{
-                width: '10vw',
-              }}
-            >
-              ${item.price}
-            </td>
-            <td
-              className='flex justify-center items-center'
-              style={{
-                width: '10vw',
-              }}
-            >
-              {item.amount}
-            </td>
-            <td
-              className='flex justify-center items-center'
-              style={{
-                width: '10vw',
-              }}
-            >
-              <button
-                aria-label='remove item from cart'
-                //TODO    make this work
-                onClick={() => removeItem(item)}
-              >
-                <span role='img' aria-label='red cross mark emoji'>
-                  ❌
-                </span>
-              </button>
-            </td>
-            <td
-              className='flex justify-center items-center'
-              style={{
-                width: '10vw',
-              }}
-            >
-              ${item.price * item.amount}
-            </td>
+            <th className='text-left' style={{ width: '50vw' }}>
+              Product
+            </th>
+            <th style={{ width: '10vw' }}>Price</th>
+            <th style={{ width: '10vw' }}>Quantity</th>
+            <th style={{ width: '10vw' }}>Remove</th>
+            <th style={{ width: '10vw' }}>Price</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {items.map(item => (
+            <tr
+              className='flex justify-around border-b-2 border-primary'
+              key={item.id}
+              style={{
+                width: '80vw',
+              }}
+            >
+              <td
+                className='flex items-center text-left font-semibold'
+                style={{
+                  width: '50vw',
+                }}
+              >
+                <img
+                  className='mr-2'
+                  src={item.albumArt}
+                  alt={`${item.albumTitle} album cover`}
+                  style={{ width: '10vw' }}
+                />
+                {item.albumTitle} by {item.artist}
+              </td>
+              <td
+                className='flex justify-center items-center'
+                style={{
+                  width: '10vw',
+                }}
+              >
+                ${item.price}
+              </td>
+              <td
+                className='flex justify-center items-center'
+                style={{
+                  width: '10vw',
+                }}
+              >
+                {item.amount}
+              </td>
+              <td
+                className='flex justify-center items-center'
+                style={{
+                  width: '10vw',
+                }}
+              >
+                <button
+                  aria-label='remove item from cart'
+                  //TODO    make this work
+                  onClick={() => removeItem(item)}
+                >
+                  <span role='img' aria-label='red cross mark emoji'>
+                    ❌
+                  </span>
+                </button>
+              </td>
+              <td
+                className='flex justify-center items-center'
+                style={{
+                  width: '10vw',
+                }}
+              >
+                ${item.price * item.amount}
+              </td>
+            </tr>
+          ))}
+        </tbody>
         <tfoot className='text-right'>
           <p className='font-bold pt-2'>Subtotal ${subtotal}</p>
           <button
