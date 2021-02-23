@@ -51,7 +51,7 @@
     ]
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "@fullhuman/postcss-purgecss": "^4.0.2",
     "@types/jest": "^26.0.13",
     "autoprefixer": "^9.8.6",
     "cross-env": "^7.0.2",
